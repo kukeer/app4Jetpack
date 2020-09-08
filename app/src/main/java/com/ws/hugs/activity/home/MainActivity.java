@@ -3,81 +3,45 @@ package com.ws.hugs.activity.home;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.lifecycle.Lifecycle;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.RequestBody;
+
 import okhttp3.ResponseBody;
-import retrofit2.Response;
 
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Parcelable;
 import android.util.Log;
 import android.view.GestureDetector;
-import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.VelocityTracker;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.Scroller;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.qmuiteam.qmui.widget.QMUIPagerAdapter;
 import com.qmuiteam.qmui.widget.QMUIViewPager;
-import com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton;
-import com.ws.hugs.HugApplication;
 import com.ws.hugs.R;
-import com.ws.hugs.activity.home.fragment.IndexFragment;
-import com.ws.hugs.activity.home.fragment.BlankFragment2;
-import com.ws.hugs.activity.search.SearchActivity;
-import com.ws.hugs.api.RequestCenter;
 import com.ws.hugs.api.RequestManager;
-import com.ws.hugs.common.utils.FTPCallback;
-import com.ws.hugs.common.utils.FTPManager;
-import com.ws.hugs.common.utils.SingleWorker;
-import com.ws.hugs.common.view.SimpleSearchBar;
 import com.ws.hugs.data.event.EventMessage;
 import com.ws.hugs.data.remote.MM131Abum;
-import com.ws.hugs.data.remote.MM131Article;
 import com.ws.hugs.data.remote.MM131Picture;
-import com.ws.hugs.data.remote.response.MPageResponse;
 import com.ws.hugs.data.remote.response.MResponse;
-import com.ws.hugs.paging.MM131ArticleCallback;
-import com.ws.hugs.service.MyService;
 import com.xcheng.retrofit.AndroidLifecycle;
 import com.xcheng.retrofit.Call;
 import com.xcheng.retrofit.Callback;
 import com.xcheng.retrofit.HttpError;
 import com.xcheng.retrofit.LifecycleProvider;
-import com.xcheng.retrofit.RetrofitFactory;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.Base64;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
-import java.util.concurrent.Callable;
-import java.util.concurrent.FutureTask;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.stream.Collectors;
 
 public class MainActivity extends AppCompatActivity
         implements GestureDetector.OnGestureListener {

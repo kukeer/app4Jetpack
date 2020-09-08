@@ -29,7 +29,7 @@ import com.ws.hugs.data.viewmodel.MM131ArticleViewModel;
 import com.ws.hugs.paging.MyAdapter;
 
 
-public class IndexFragment extends Fragment {
+public class ImageViewerFragment extends Fragment {
 
 
     private String TAG = getClass().getSimpleName();
