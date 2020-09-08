@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:background="@color/qmui_config_color_75_white"
+    tools:context=".activity.login.LoginActivity">
+
+    <com.qmuiteam.qmui.alpha.QMUIAlphaTextView
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/name_input"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:text="Hugs"
+        android:textColor="@color/qmui_config_color_blue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="50sp"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/inpt_name_pre"
+        android:layout_width="80dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="230dp"
+        android:gravity="center_vertical|right"
+        android:text="邮箱:"
+        android:textColor="@color/qmui_config_color_blue"
+        android:textSize="18sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+
+        />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/name_input"
+        android:paddingLeft="12dp"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="230dp"
+        android:layout_marginRight="30dp"
+        android:maxLines="1"
+        android:background="@drawable/edit_little_rounded"
+        android:textColor="@color/qmui_config_color_black"
+        android:inputType="text"
+        app:layout_constraintLeft_toRightOf="@id/inpt_name_pre"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/inpt_pw_pre"
+        android:textColor="@color/qmui_config_color_blue"
+        android:layout_width="80dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center_vertical|right"
+        android:text="密码:"
+        android:textSize="18sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/inpt_name_pre" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/pw_input"
+        android:layout_width="0dp"
+        android:paddingLeft="12dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/edit_little_rounded"
+        android:inputType="textPassword"
+        android:maxLines="1"
+        app:layout_constraintLeft_toRightOf="@id/inpt_name_pre"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/inpt_name_pre" />
+
+     <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/resume_pw_pre"
+         android:textColor="@color/qmui_config_color_blue"
+        android:layout_width="80dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center_vertical|right"
+        android:text="确认密码:"
+        android:textSize="18sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/inpt_pw_pre" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/reume_pw_input"
+        android:layout_width="0dp"
+        android:paddingLeft="12dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/edit_little_rounded"
+        android:inputType="textPassword"
+        android:maxLines="1"
+        app:layout_constraintLeft_toRightOf="@id/inpt_name_pre"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/inpt_pw_pre" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/code_pre"
+        android:textColor="@color/qmui_config_color_blue"
+        android:layout_width="80dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center_vertical|right"
+        android:text="校验码:"
+        android:textSize="18sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/resume_pw_pre" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/code_input"
+        android:layout_width="100dp"
+        android:paddingLeft="12dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/edit_little_rounded"
+        android:inputType="textPassword"
+        android:maxLines="1"
+        app:layout_constraintLeft_toRightOf="@id/inpt_name_pre"
+        app:layout_constraintTop_toBottomOf="@id/resume_pw_pre" />
+    <TextView
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:text="(6位数)"
+        android:textSize="15sp"
+        android:layout_marginLeft="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:maxLength="6"
+        android:inputType="number"
+        app:layout_constraintLeft_toRightOf="@id/code_input"
+        app:layout_constraintTop_toBottomOf="@id/reume_pw_input"
+        />
+    <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+        app:qmui_borderColor="#00000000"
+        android:id="@+id/login_btn"
+        android:layout_marginTop="30dp"
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="40dp"
+        android:text="注册"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:qmui_backgroundColor="@color/btn_filled_blue_bg_normal"
+        android:textColor="@color/qmui_config_color_white"
+        app:layout_constraintTop_toBottomOf="@id/code_input"/>
+    <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+        app:qmui_borderColor="#00000000"
+        android:id="@+id/cancel_btn"
+        android:layout_marginTop="30dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginRight="40dp"
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="30dp"
+        android:textColor="@color/qmui_config_color_white"
+        android:text="登录"
+        app:qmui_backgroundColor="#048e2c"
+        app:layout_constraintTop_toBottomOf="@id/code_input"/>
+
+    <TextView
+        android:textSize="40sp"
+        android:gravity="center"
+        android:background="@color/qmui_config_color_blue"
+        android:text="返回"
+        android:textColor="@color/qmui_config_color_75_white"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

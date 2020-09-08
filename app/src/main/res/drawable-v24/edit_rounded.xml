@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:padding="10dp"
+    android:shape="rectangle">
+    <solid android:color="#FFFFFF" />
+    <stroke android:color="@color/qmui_config_color_gray_9"/>
+    <corners
+        android:bottomLeftRadius="115dp"
+        android:bottomRightRadius="115dp"
+        android:topLeftRadius="115dp"
+        android:topRightRadius="115dp" />
+</shape>

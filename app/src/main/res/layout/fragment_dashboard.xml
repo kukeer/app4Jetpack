@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.index.ui.dashboard.DashboardFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:background="@color/qmui_config_color_gray_9"
+        app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="90dp">
+        <ImageView
+            android:id="@+id/category"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:src="@mipmap/categlory"
+            android:layout_width="30dp"
+            android:layout_height="30dp"/>
+        <HorizontalScrollView
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/category"
+            android:id="@+id/scroller_h"
+            android:scrollbars="none"
+            android:orientation="horizontal"
+            android:layout_width="0dp"
+            android:layout_height="30dp">
+            <LinearLayout
+                android:layout_gravity="center_vertical"
+                android:id="@+id/linearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                />
+        </HorizontalScrollView>
+
+
+        <ImageView
+            android:id="@+id/mdownload_img"
+            app:layout_constraintTop_toBottomOf="@id/scroller_h"
+            app:layout_constraintRight_toLeftOf="@id/home_gift"
+            android:src="@mipmap/download"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"/>
+        <ImageView
+            android:id="@+id/home_gift"
+            app:layout_constraintTop_toBottomOf="@id/scroller_h"
+            app:layout_constraintRight_toRightOf="parent"
+            android:src="@mipmap/gift"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"/>
+
+        <com.ws.hugs.common.view.SimpleSearchBar
+            android:id="@+id/msearch_bar"
+            app:layout_constraintTop_toBottomOf="@id/scroller_h"
+            app:layout_constraintRight_toLeftOf="@id/mdownload_img"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:background="@drawable/edit_rounded"
+            android:textColor="@color/qmui_config_color_50_pure_black"
+            android:paddingLeft="10dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_width="0dp"
+            android:layout_height="30dp"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <fragment
+        android:id="@+id/mfragment"
+        app:layout_constraintTop_toBottomOf="@id/top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:name="com.ws.hugs.activity.home.fragment.IndexFragment"
+        class="com.ws.hugs.activity.home.fragment.IndexFragment"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

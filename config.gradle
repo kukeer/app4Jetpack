@@ -1,0 +1,92 @@
+ext {
+
+    android = [
+            compileSdkVersion: 29,
+            buildToolsVersion: "29.0.3",
+            applicationId    : "com.ws.hugs",
+            minSdkVersion    : 26,
+            targetSdkVersion : 29,
+            versionCode      : 1,
+            versionName      : "1.0"
+    ]
+
+
+    versions = [
+
+    ]
+
+    support = [
+
+    ]
+
+
+    dependencies = [
+            //rxjava
+            "rxjava"                : "io.reactivex.rxjava2:rxjava:2.2.3",
+            "rxandroid"             : "io.reactivex.rxjava2:rxandroid:2.1.0",
+            //rx系列与View生命周期同步
+            "rxlifecycle"           : "com.trello.rxlifecycle2:rxlifecycle:2.2.2",
+            "rxlifecycle-components": "com.trello.rxlifecycle2:rxlifecycle-components:2.2.2",
+            //rxbinding
+            "rxbinding"             : "com.jakewharton.rxbinding2:rxbinding:2.1.1",
+            //rx 6.0权限请求
+            "rxpermissions"         : "com.github.tbruyelle:rxpermissions:0.10.2",
+            //network
+            "retrofit"              : "com.squareup.retrofit2:retrofit:2.9.0",
+            "converter-gson"        : "com.squareup.retrofit2:converter-gson:2.9.0",
+            "adapter-rxjava"        : "com.squareup.retrofit2:adapter-rxjava:2.9.0",
+            "okhttp"                : "com.squareup.okhttp3:okhttp:3.10.0",
+            "logging-interceptor"   : "com.squareup.okhttp3:logging-interceptor:3.9.1",
+            "LoggingInterceptor"    : "com.github.ihsanbal:LoggingInterceptor:3.1.0-rc5",
+            "refrofit-helper"       : "com.xcheng:retrofit-helper:1.6.1",
+
+            //glide图片加载
+            "glide"                 : "com.github.bumptech.glide:glide:4.11.0",
+            "glide-compiler"        : "com.github.bumptech.glide:compiler:4.11.0",
+            "disklrucache"          : "com.github.bumptech.glide:disklrucache:4.11.0",
+            "annotations"           : "com.github.bumptech.glide:annotations:4.11.0",
+
+            //jetpack
+            "livedata"              : "android.arch.lifecycle:livedata:2.3.0-alpha02",
+            "viewmodel"             : "android.arch.lifecycle:viewmodel:2.3.0-alpha02",
+            "extentions"            : "android.arch.lifecycle:extensions:2.3.0-alpha02",
+            "room-runtime"          : "androidx.room:room-runtime:2.3.0-alpha02",
+            "room-compiler"         : "androidx.room:room-compiler:2.3.0-alpha02",
+            "paging"                : "androidx.paging:paging-runtime:3.0.0-alpha03",
+
+
+            "legacy-support-v4"     :"androidx.legacy:legacy-support-v4:1.0.0",
+            "lifecycle-extensions"  :"androidx.lifecycle:lifecycle-extensions:2.2.0",
+
+            //腾讯 UI框架
+            "qmui"                  :"com.qmuiteam:qmui:2.0.0-alpha10",
+            "banner"                :"com.youth.banner:banner:2.1.0",
+            "material"              :"com.google.android.material:material:1.2.0",
+
+            "navigation-fragment"   :"androidx.navigation:navigation-fragment:2.3.0",
+            "navigation-ui"         :"androidx.navigation:navigation-ui:2.3.0",
+
+            //内存泄漏 crash收集
+            "leakcanary-android"    :"com.squareup.leakcanary:leakcanary-android:2.4",
+            "xcrash-android-lib"    :"com.iqiyi.xcrash:xcrash-android-lib:2.4.3",
+            "cardview"              : "androidx.cardview:cardview:1.0.0",
+
+            "eventbus"              : "org.greenrobot:eventbus:3.2.0",
+
+            "appcompat"             : "androidx.appcompat:appcompat:1.2.0",
+            "constraintlayout"      : "androidx.constraintlayout:constraintlayout:1.1.3",
+
+            "dagger"                : "com.google.dagger:dagger:2.28.3",
+            "dagger-compiler"       : "com.google.dagger:dagger-compiler:2.28.3",
+            "hilt"                  : "com.google.dagger:hilt-android-gradle-plugin:2.28-alpha",
+            "eventbus"              : "org.greenrobot:eventbus:3.1.1",
+
+
+            //ftp
+            // https://mvnrepository.com/artifact/commons-net/commons-net
+            "commons-net"           : "commons-net:commons-net:3.7"
+
+
+
+    ]
+}
