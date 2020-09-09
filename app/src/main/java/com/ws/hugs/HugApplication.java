@@ -89,28 +89,28 @@ public class HugApplication extends Application {
         phoneWidth = wm.getDefaultDisplay().getWidth();
         phoneHeight = wm.getDefaultDisplay().getHeight();
         RequestManager.initOkHttp();
-//        SmartRefreshLayout.setDefaultRefreshInitializer(new DefaultRefreshInitializer() {
-//            @Override
-//            public void initialize(@NonNull Context context, @NonNull RefreshLayout layout) {
-//                //开始设置全局的基本参数（可以被下面的DefaultRefreshHeaderCreator覆盖）
-//                layout.setReboundDuration(1000);
-////                layout.setReboundInterpolator(new DropBounceInterpolator());
-//                layout.setFooterHeight(100);
-//                layout.setDisableContentWhenLoading(false);
-//                layout.setPrimaryColorsId(R.color.colorPrimary, android.R.color.white);
-//            }
-//        });
-//
-//        //全局设置默认的 Header
-//        SmartRefreshLayout.setDefaultRefreshHeaderCreator(new DefaultRefreshHeaderCreator() {
-//            @Override
-//            public RefreshHeader createRefreshHeader(Context context, RefreshLayout layout) {
-//                //开始设置全局的基本参数（这里设置的属性只跟下面的MaterialHeader绑定，其他Header不会生效，能覆盖DefaultRefreshInitializer的属性和Xml设置的属性）
-//                layout.setEnableHeaderTranslationContent(false);
-//
-//                return new MaterialHeader(context).setColorSchemeResources(R.color.colorAccent,R.color.colorPrimary,R.color.design_default_color_primary_variant);
-//            }
-//        });
+        SmartRefreshLayout.setDefaultRefreshInitializer(new DefaultRefreshInitializer() {
+            @Override
+            public void initialize(@NonNull Context context, @NonNull RefreshLayout layout) {
+                //开始设置全局的基本参数（可以被下面的DefaultRefreshHeaderCreator覆盖）
+                layout.setReboundDuration(1000);
+//                layout.setReboundInterpolator(new DropBounceInterpolator());
+                layout.setFooterHeight(100);
+                layout.setDisableContentWhenLoading(false);
+                layout.setPrimaryColorsId(R.color.colorPrimary, android.R.color.white);
+            }
+        });
+
+        //全局设置默认的 Header
+        SmartRefreshLayout.setDefaultRefreshHeaderCreator(new DefaultRefreshHeaderCreator() {
+            @Override
+            public RefreshHeader createRefreshHeader(Context context, RefreshLayout layout) {
+                //开始设置全局的基本参数（这里设置的属性只跟下面的MaterialHeader绑定，其他Header不会生效，能覆盖DefaultRefreshInitializer的属性和Xml设置的属性）
+                layout.setEnableHeaderTranslationContent(false);
+
+                return new MaterialHeader(context).setColorSchemeResources(R.color.colorAccent,R.color.colorPrimary,R.color.design_default_color_primary_variant);
+            }
+        });
     }
 
     @Override

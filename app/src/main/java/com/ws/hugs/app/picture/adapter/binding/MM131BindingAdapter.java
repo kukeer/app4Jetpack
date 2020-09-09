@@ -1,23 +1,13 @@
 package com.ws.hugs.adapter.binding;
 
-import android.content.Context;
-import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.text.TextUtils;
 import android.util.Log;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.ws.hugs.R;
-import com.ws.hugs.api.RequestCenter;
-import com.ws.hugs.api.RequestManager;
-import com.ws.hugs.common.utils.FTPCallback;
-import com.ws.hugs.common.utils.FTPManager;
-import com.ws.hugs.common.utils.SingleWorker;
 
-import androidx.annotation.UiThread;
 import androidx.databinding.BindingAdapter;
 
 

@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -26,6 +27,7 @@ import com.ws.hugs.R;
 import com.ws.hugs.common.utils.SPUtils;
 import com.ws.hugs.data.db.MM131ArticleModel;
 import com.ws.hugs.data.viewmodel.MM131ArticleViewModel;
+import com.ws.hugs.databinding.ImageViewerAdpaterBinding;
 import com.ws.hugs.paging.MyAdapter;
 
 
@@ -40,24 +42,11 @@ public class ImageViewerFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View inflate = inflater.inflate(R.layout.blank_fragment, container, false);
-//        smartRefreshLayout = inflate.findViewById(R.id.smartRefresh);
-//        smartRefreshLayout.setOnRefreshListener(new OnRefreshListener() { //下拉刷新
-//            @Override
-//            public void onRefresh(RefreshLayout refreshlayout) {
-//                refreshlayout.finishRefresh(2000/*,false*/);//传入false表示刷新失败
-//            }
-//        });
-//
-//        smartRefreshLayout.setOnLoadMoreListener(new OnLoadMoreListener() { //上拉加载更多
-//            @Override
-//            public void onLoadMore(RefreshLayout refreshlayout) {
-//                refreshlayout.finishLoadMore(2000/*,false*/);//传入false表示加载失败
-//            }
-//        });
-//        SPUtils.getInstance().removeAllData();
+        ImageViewerAdpaterBinding dataBinding = DataBindingUtil.bind(inflater.inflate(R.layout.image_viewer_adpater, container, false));
+        View inflate = inflater.inflate(R.layout.image_viewer_adpater, container, false);
+
         if (recyclerView ==null){
-            recyclerView = inflate.findViewById(R.id.recycle_view);
+            recyclerView = dataBinding.recycleView;
             LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
             recyclerView.setLayoutManager(linearLayoutManager);
 

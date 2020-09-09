@@ -43,15 +43,8 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-//        banner = findViewById(R.id.banneree);
-        addTestData(6);
-//        ImageAdapter adapter = new ImageAdapter(bannerImageList);
-
-//        banner.setAdapter(adapter)
-////                .addBannerLifecycleObserver(this)//添加生命周期观察者
-//                .setIndicator(new CircleIndicator(getApplicationContext()));//设置指示器\
-//        banner.start();
         BottomNavigationView navView = findViewById(R.id.nav_view);
+
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
@@ -61,8 +54,6 @@ public class HomeActivity extends AppCompatActivity {
 //        getSupportActionBar().hide();
 //        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
-//        PhoneInfo phoneInfo = new PhoneInfo(getBaseContext());
-//        Log.i("TAG","phoneInfo.getNativePhoneNumber "+phoneInfo.getNativePhoneNumber());
     }
 
     @Override
