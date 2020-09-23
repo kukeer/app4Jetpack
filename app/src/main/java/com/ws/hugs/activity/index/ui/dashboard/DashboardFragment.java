@@ -15,7 +15,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.ws.hugs.R;
-import com.ws.hugs.activity.search.SearchActivity;
+import com.ws.hugs.app.picture.acticity.search.SearchActivity;
 import com.ws.hugs.common.view.SimpleSearchBar;
 import com.ws.hugs.service.MyService;
 

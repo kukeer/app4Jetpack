@@ -1,13 +1,12 @@
-package com.ws.hugs.paging;
+package com.ws.hugs.app.picture.paging;
+
+import androidx.annotation.NonNull;
 
 import com.ws.hugs.data.remote.MM131Article;
 import com.ws.hugs.data.remote.response.MPageResponse;
 import com.xcheng.retrofit.Call;
 import com.xcheng.retrofit.Callback;
 import com.xcheng.retrofit.HttpError;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 
 public abstract class MM131ArticleCallback implements Callback<MPageResponse<MM131Article>> {
 

@@ -1,4 +1,4 @@
-package com.ws.hugs.data.db;
+package com.ws.hugs.app.picture.data.db;
 
 import java.util.Date;
 

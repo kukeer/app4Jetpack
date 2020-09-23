@@ -20,7 +20,7 @@
         android:maxLines="1"
         android:maxLength="16"
         android:layout_width="0dp"
-        android:hint="  美眉"
+        android:hint="美眉"
         android:layout_height="30dp" />
 
     <TextView

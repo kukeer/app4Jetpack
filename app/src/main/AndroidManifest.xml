@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ws.hugs">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:name=".HugApplication"
@@ -13,22 +13,23 @@
         android:supportsRtl="true"
         android:theme="@style/QMUI.Compat.NoActionBar"
         android:usesCleartextTraffic="true">
+        <activity android:name=".app.picture.acticity.videoplayer.VideoPlayActivity"></activity>
+        <activity android:name=".app.picture.acticity.main.PicActivity" />
         <activity
-            android:name=".activity.login.LoginActivity"
-            android:screenOrientation="fullSensor"
-            ></activity>
+            android:name=".activity.login.login.LoginActivity"
+            android:screenOrientation="fullSensor" />
         <activity
-            android:label="@string/title_notifications"
-            android:name=".activity.home.MainActivity" >
+            android:name=".app.picture.acticity.home.MainActivity"
+            android:label="@string/title_notifications">
             <intent-filter>
-                <action android:name="android.intent.action.PICK"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-                <data android:scheme="zzhsign"/>
+                <action android:name="android.intent.action.PICK" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:scheme="zzhsign" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.search.SearchActivity" >
-
-        </activity>
+        <activity android:name=".app.picture.acticity.search.SearchActivity" />
 
         <service
             android:name=".service.MyService"

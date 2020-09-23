@@ -1,5 +1,6 @@
 package com.ws.hugs.api;
 
+import com.ws.hugs.app.picture.data.remote.VideoArticleDto;
 import com.ws.hugs.data.remote.MM131Abum;
 import com.ws.hugs.data.remote.MM131Article;
 import com.ws.hugs.data.remote.response.MPageResponse;
@@ -12,7 +13,10 @@ import okhttp3.ResponseBody;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
 
-public interface RequestCenter {
+public interface MM131RequestCenter {
+
+    public static final int DEFAULT_PAGE_SIZE = 8;
+
     @GET("/getImageListById")
     Call<MResponse<MM131Abum>> getImageList(@Query("titleId") String id, @Query("time")int time);
 
@@ -29,6 +33,10 @@ public interface RequestCenter {
 
     @GET("/getPicById")
     Call<ResponseBody> getPicById(@Query("id") String id);
+
+
+    @GET("/play/list")
+    Call<MPageResponse<VideoArticleDto>> getVideoList(@Query("current") int current);
 
 
 }

@@ -1,4 +1,4 @@
-package com.ws.hugs.paging;
+package com.ws.hugs.app.picture.paging;
 
 import android.content.Context;
 import android.content.Intent;
@@ -6,41 +6,24 @@ import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
-import android.view.WindowManager;
-
-import com.google.gson.Gson;
-import com.ws.hugs.R;
-import com.ws.hugs.api.RequestCenter;
-import com.ws.hugs.api.RequestManager;
-import com.ws.hugs.common.utils.SPUtils;
-import com.ws.hugs.data.db.MM131ArticleModel;
-import com.ws.hugs.data.event.EventMessage;
-import com.ws.hugs.data.remote.MM131Article;
-import com.ws.hugs.data.remote.response.MPageResponse;
-import com.ws.hugs.databinding.ArticleBinding;
-import com.xcheng.retrofit.Call;
-import com.xcheng.retrofit.Callback;
-import com.xcheng.retrofit.HttpError;
-import com.xcheng.retrofit.RetrofitFactory;
-
-import org.greenrobot.eventbus.EventBus;
-
-import java.math.BigDecimal;
-import java.util.List;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.locks.ReentrantLock;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
-import androidx.paging.PagedList;
 import androidx.paging.PagedListAdapter;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.gson.Gson;
+import com.ws.hugs.R;
+import com.ws.hugs.app.picture.data.db.MM131ArticleModel;
+import com.ws.hugs.data.event.EventMessage;
+import com.ws.hugs.data.remote.MM131Article;
+import com.ws.hugs.databinding.ArticleBinding;
 
-public class MyAdapter extends PagedListAdapter<MM131ArticleModel,MyViewHolder> {
+import org.greenrobot.eventbus.EventBus;
+
+
+public class MyAdapter extends PagedListAdapter<MM131ArticleModel, MyViewHolder> {
 
     Context context;
 
@@ -77,6 +60,7 @@ public class MyAdapter extends PagedListAdapter<MM131ArticleModel,MyViewHolder> 
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         MM131ArticleModel titleItem = getItem(position);
         Gson gson = new Gson();
+        Log.i(TAG,"onBindViewHolder 启动"+titleItem);
         MM131Article mm131Article = gson.fromJson(gson.toJson(titleItem), MM131Article.class);
         holder.articleBinding.setArticle(mm131Article);
         holder.articleBinding.setAdapter(MyAdapter.this);

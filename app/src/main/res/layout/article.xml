@@ -10,7 +10,7 @@
             type="com.ws.hugs.data.remote.MM131Article" />
         <variable
             name="adapter"
-            type="com.ws.hugs.paging.MyAdapter" />
+            type="com.ws.hugs.app.picture.paging.MyAdapter" />
     </data>
 
     <RelativeLayout

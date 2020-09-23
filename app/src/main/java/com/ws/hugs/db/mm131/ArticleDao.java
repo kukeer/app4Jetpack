@@ -1,11 +1,10 @@
 package com.ws.hugs.db.mm131;
 
-import com.ws.hugs.data.db.MM131ArticleModel;
+import com.ws.hugs.app.picture.data.db.MM131ArticleModel;
 
 import java.util.List;
 
 
-import androidx.lifecycle.LiveData;
 import androidx.paging.DataSource;
 import androidx.room.Dao;
 import androidx.room.Delete;

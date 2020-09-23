@@ -1,4 +1,4 @@
-package com.ws.hugs.adapter;
+package com.ws.hugs.app.picture.adapter;
 
 import android.graphics.BitmapFactory;
 import android.util.Log;
@@ -6,13 +6,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.ws.hugs.data.model.BannerImage;
 import com.youth.banner.adapter.BannerAdapter;
 
 import java.util.List;
-
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
 
 public class ImageAdapter extends BannerAdapter<BannerImage, ImageAdapter.BannerViewHolder> {
 
@@ -22,6 +22,8 @@ public class ImageAdapter extends BannerAdapter<BannerImage, ImageAdapter.Banner
         //设置数据，也可以调用banner提供的方法,或者自己在adapter中实现
         super(mDatas);
     }
+
+
 
     //创建ViewHolder，可以用viewType这个字段来区分不同的ViewHolder
     @Override
@@ -54,14 +56,15 @@ public class ImageAdapter extends BannerAdapter<BannerImage, ImageAdapter.Banner
 //                .load(newUrl)
 //                .error(R.mipmap.search)
 //                .into(holder.imageView);
-        holder.imageView.setImageBitmap(BitmapFactory.decodeResource(holder.imageView.getResources(),data.getResId()));
-        holder.imageView.setOnClickListener(new View.OnClickListener(){
+//        holder.imageView.setImageBitmap(BitmapFactory.decodeResource(holder.imageView.getResources(),data.getResId()));
+//        holder.imageView.setOnClickListener(new View.OnClickListener(){
+//
+//            @Override
+//            public void onClick(View v) {
+//                Log.i(TAG,"点击了轮播图 "+data.getUrl());
+//            }
+//        });
 
-            @Override
-            public void onClick(View v) {
-                Log.i(TAG,"点击了轮播图 "+data.getUrl());
-            }
-        });
     }
 
     class BannerViewHolder extends RecyclerView.ViewHolder {

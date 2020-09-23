@@ -7,7 +7,6 @@ import android.util.Log;
 import android.view.View;
 
 import com.ws.hugs.HugApplication;
-import com.ws.hugs.activity.home.MainActivity;
 
 public class MM131Article {
 

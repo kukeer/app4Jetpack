@@ -8,11 +8,23 @@ import com.xcheng.retrofit.DownloadCallAdapterFactory;
 import com.xcheng.retrofit.RetrofitFactory;
 
 import java.io.EOFException;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.charset.Charset;
+import java.security.KeyManagementException;
+import java.security.KeyStore;
+import java.security.KeyStoreException;
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
+import java.security.UnrecoverableKeyException;
+import java.security.cert.CertificateException;
 import java.util.Locale;
-import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
+
+import javax.net.ssl.KeyManagerFactory;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.TrustManagerFactory;
 
 import okhttp3.Interceptor;
 import okhttp3.MediaType;
@@ -24,7 +36,6 @@ import okhttp3.ResponseBody;
 import okhttp3.logging.HttpLoggingInterceptor;
 import okio.Buffer;
 import okio.BufferedSource;
-import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -48,42 +59,56 @@ public class RequestManager {
 
         return new LogInterceptor();
     }
-    public static void initOkHttp() {
+    public static void initOkHttp() throws KeyStoreException, UnrecoverableKeyException, NoSuchAlgorithmException, KeyManagementException, IOException, CertificateException {
 
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
         httpClient.connectTimeout(60, TimeUnit.SECONDS);
         httpClient.readTimeout(60, TimeUnit.SECONDS);
         httpClient.writeTimeout(60, TimeUnit.SECONDS);
         httpClient.addInterceptor(getLogInterceptor());  // <-- this is the important line!
+
+
+        SSLContext sslContext = SSLContext.getInstance("SSL");
+        TrustManagerFactory trustManagerFactory = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
+        KeyStore keyStore = readKeyStore();
+        trustManagerFactory.init(keyStore);
+        KeyManagerFactory keyManagerFactory = KeyManagerFactory.getInstance(KeyManagerFactory.getDefaultAlgorithm());
+        keyManagerFactory.init(keyStore, "zzhiot@sina.com".toCharArray());
+        sslContext.init(keyManagerFactory.getKeyManagers(),trustManagerFactory.getTrustManagers(), new SecureRandom());
+        httpClient.sslSocketFactory(sslContext.getSocketFactory());
 //        httpClient.addNetworkInterceptor(new NetWorkIntce)
 //        new GsonBuilder().registerTypeAdapter()
+
+        OkHttpClient client = httpClient.build();
+      //your method to obtain KeyStore
+
+
         retrofit = new Retrofit.Builder()
-                .baseUrl("http://139.198.191.101:9999/")
+                .baseUrl("https://www.zzhiot.top:10000/")
                 .addConverterFactory(GsonConverterFactory.create())
-//                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-//                .callFactory(new ReplaceUrlCallFactory(httpClient.build()) {
-//                    @Nullable
-//                    @Override
-//                    protected HttpUrl getNewUrl(String baseUrlName, Request request) {
-//                        Log.e("print", "baseUrlName:" + baseUrlName);
-//                        if (baseUrlName.equals("baidu")) {
-//                            String oldUrl = request.url().toString();
-//                            String newUrl = oldUrl.replace("http://139.198.191.101:9999/", "https://www.baidu.com/");
-//                            return HttpUrl.get(newUrl);
-//                        }
-//                        return null;
-//                    }
-//                })
                 .addCallAdapterFactory(CallAdapterFactory.INSTANCE)
                 .addCallAdapterFactory(DownloadCallAdapterFactory.INSTANCE)
                 .addConverterFactory(GsonConverterFactory.create())
-                .client(httpClient.build())
+                .client(client)
                 .build();
         RetrofitFactory.DEFAULT = retrofit;
+        Log.i(TAG,"初始化成功 当前 reftofit 为 "+retrofit);
     }
 
-    public static RequestCenter getRequestCenter(){
-        return RetrofitFactory.create(RequestCenter.class);
+    private static KeyStore readKeyStore() throws KeyStoreException, IOException, CertificateException, NoSuchAlgorithmException {
+        KeyStore ks = KeyStore.getInstance(KeyStore.getDefaultType());
+
+        // get user password and file input stream
+        char[] password = "zzhiot@sina.com".toCharArray();
+        InputStream open = HugApplication.getApplication().getApplicationContext().getAssets().open("private.bks");
+        ks.load(open, password);
+        open.close();
+        return ks;
+
+    }
+
+    public static MM131RequestCenter getRequestCenter(){
+        return RetrofitFactory.create(MM131RequestCenter.class);
     }
 
     static class LogInterceptor implements Interceptor {

@@ -1,26 +1,29 @@
-package com.ws.hugs.adapter.binding;
+package com.ws.hugs.app.picture.adapter.binding;
 
 import android.graphics.BitmapFactory;
 import android.text.TextUtils;
 import android.util.Log;
 import android.widget.ImageView;
 
+import androidx.databinding.BindingAdapter;
+
 import com.bumptech.glide.Glide;
 import com.ws.hugs.R;
-
-import androidx.databinding.BindingAdapter;
 
 
 public class MM131BindingAdapter {
 
     private static final String TAG = MM131BindingAdapter.class.getClass().getSimpleName();
-    @BindingAdapter("mm131image")
 
+    @BindingAdapter("mm131image")
     public static void setImage(ImageView image, String imageUrl){
         Log.i(TAG,"即将下载图片"+imageUrl);
         if (!TextUtils.isEmpty(imageUrl)){
 
-            Glide.with(image).load("http://139.198.191.101:9999/getPicByThemeId?id="+imageUrl).into(image);
+
+            Log.i(TAG,"正在设置图片 "+"http://www.zzhiot.top:9999/getPicByThemeId?id="+imageUrl);
+
+            Glide.with(image).load("http://www.zzhiot.top:9999/getPicByThemeId?id="+imageUrl).error(R.mipmap.l2).into(image);
 
 //            SingleWorker singleWorker = SingleWorker.getInstance();
 //            singleWorker.execute(singleWorker.generateTask(imageUrl, new FTPCallback() {

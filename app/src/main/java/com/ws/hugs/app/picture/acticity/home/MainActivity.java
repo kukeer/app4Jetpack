@@ -1,4 +1,4 @@
-package com.ws.hugs.activity.home;
+package com.ws.hugs.app.picture.acticity.home;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -102,8 +102,6 @@ public class MainActivity extends AppCompatActivity
         });
 
         qmuiPagerAdapter = new QMUIPagerAdapter() {
-
-
             @NonNull
             @Override
             protected Object hydrate(@NonNull ViewGroup container, int position) {
@@ -216,7 +214,7 @@ public class MainActivity extends AppCompatActivity
             String message = eventMessage.getMessage();
 
             Call<MResponse<MM131Abum>> imageList = RequestManager.getRequestCenter().getImageList(message, 0);
-
+//            imageList.bindToLifecycle()
             imageList.enqueue(new Callback<MResponse<MM131Abum>>() {
                 @Override
                 public void onStart(Call<MResponse<MM131Abum>> call) {
@@ -244,7 +242,7 @@ public class MainActivity extends AppCompatActivity
                 public void onSuccess(Call<MResponse<MM131Abum>> call, MResponse<MM131Abum> mm131AbumMResponse) {
                     MM131Abum t = mm131AbumMResponse.getT();
                     List<MM131Picture> collect = t.getList();
-                    for (int i = 0; i < collect.size(); i++) {
+                    for (int i = 0; i < (collect.size()); i++) {
                         Call<ResponseBody> bodyCall = RequestManager.getRequestCenter().getPicById(collect.get(i).getPicId() + "");
                         bodyCall.enqueue(new Callback<ResponseBody>(){
 
@@ -282,6 +280,11 @@ public class MainActivity extends AppCompatActivity
 
                             }
                         });
+//                        try {
+//                            Thread.sleep(1000);
+//                        } catch (InterruptedException e) {
+//                            e.printStackTrace();
+//                        }
                     }
 
                 }

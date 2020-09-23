@@ -75,8 +75,8 @@ public class HugApplication extends Application {
     public void onCreate() {
         super.onCreate();
 
-        init();
         application =this;
+        init();
 
     }
     public static int phoneWidth = 0;
@@ -88,7 +88,11 @@ public class HugApplication extends Application {
 //        SingleWorker.initContext(this);
         phoneWidth = wm.getDefaultDisplay().getWidth();
         phoneHeight = wm.getDefaultDisplay().getHeight();
-        RequestManager.initOkHttp();
+        try{
+            RequestManager.initOkHttp();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         SmartRefreshLayout.setDefaultRefreshInitializer(new DefaultRefreshInitializer() {
             @Override
             public void initialize(@NonNull Context context, @NonNull RefreshLayout layout) {

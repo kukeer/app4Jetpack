@@ -1,7 +1,6 @@
-package com.ws.hugs.adapter;
+package com.ws.hugs.app.picture.adapter;
 
 import android.util.Log;
-import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;

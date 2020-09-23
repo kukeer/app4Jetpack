@@ -1,10 +1,10 @@
-package com.ws.hugs.paging;
-
-import com.ws.hugs.data.db.MM131ArticleModel;
+package com.ws.hugs.app.picture.paging;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
 import androidx.paging.DataSource;
+
+import com.ws.hugs.app.picture.data.db.MM131ArticleModel;
 
 public class MM131DataSourceFactory extends DataSource.Factory<Integer, MM131ArticleModel> {
 

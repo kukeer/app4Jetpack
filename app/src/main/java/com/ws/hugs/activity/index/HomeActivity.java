@@ -5,7 +5,7 @@ import android.util.Log;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.ws.hugs.R;
-import com.ws.hugs.adapter.ImageAdapter;
+//import com.ws.hugs.adapter.ImageAdapter;
 import com.ws.hugs.common.utils.PhoneInfo;
 import com.ws.hugs.data.model.BannerImage;
 import com.youth.banner.Banner;

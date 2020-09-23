@@ -82,7 +82,7 @@
         app:layout_constraintTop_toBottomOf="@id/top_bar"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:name="com.ws.hugs.activity.home.fragment.ImageViewerFragment"
-        class="com.ws.hugs.activity.home.fragment.ImageViewerFragment"
+        android:name="com.ws.hugs.app.picture.acticity.main.fragment.ImageViewerFragment"
+        class="com.ws.hugs.app.picture.acticity.main.fragment.ImageViewerFragment"
         app:layout_constraintBottom_toBottomOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

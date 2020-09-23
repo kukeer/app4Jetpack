@@ -1,10 +1,9 @@
-package com.ws.hugs.activity.login;
+package com.ws.hugs.activity.login.login;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.hardware.fingerprint.FingerprintManagerCompat;
 
 import android.os.Bundle;
-import android.util.Log;
 
 import com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton;
 import com.ws.hugs.R;

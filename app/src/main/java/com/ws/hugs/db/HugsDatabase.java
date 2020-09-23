@@ -2,19 +2,16 @@ package com.ws.hugs.db;
 
 import android.content.Context;
 
-import com.ws.hugs.data.db.MM131ArticleModel;
-import com.ws.hugs.data.remote.MM131Article;
+import com.ws.hugs.app.picture.data.db.MM131ArticleModel;
+import com.ws.hugs.app.picture.data.db.MM131VideoArticleModel;
 import com.ws.hugs.db.mm131.ArticleDao;
+import com.ws.hugs.db.mm131.VideoArticleDao;
 
-import androidx.annotation.NonNull;
 import androidx.room.Database;
-import androidx.room.DatabaseConfiguration;
-import androidx.room.InvalidationTracker;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
-import androidx.sqlite.db.SupportSQLiteOpenHelper;
 
-@Database(entities = {MM131ArticleModel.class},version = 1,exportSchema = false)
+@Database(entities = {MM131ArticleModel.class, MM131VideoArticleModel.class},version = 1,exportSchema = false)
 public abstract class HugsDatabase extends RoomDatabase {
 
     private static final String DATABASE_NAME= "HUGS_DATABASE";
@@ -31,4 +28,5 @@ public abstract class HugsDatabase extends RoomDatabase {
         return database;
     }
     public abstract ArticleDao articleDao();
+    public abstract VideoArticleDao videoArticleDao();
 }

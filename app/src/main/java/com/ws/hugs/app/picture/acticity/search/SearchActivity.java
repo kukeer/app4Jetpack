@@ -1,4 +1,4 @@
-package com.ws.hugs.activity.search;
+package com.ws.hugs.app.picture.acticity.search;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
@@ -10,7 +10,6 @@ import android.view.View;
 import android.widget.Button;
 
 import com.ws.hugs.R;
-import com.ws.hugs.activity.home.MainActivity;
 import com.ws.hugs.data.model.Article;
 import com.ws.hugs.data.viewmodel.SearchInfoViewModel;
 

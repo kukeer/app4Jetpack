@@ -3,14 +3,14 @@ package com.ws.hugs.repositry;
 import android.util.Log;
 
 import com.ws.hugs.HugApplication;
-import com.ws.hugs.api.RequestCenter;
-import com.ws.hugs.api.RequestManager;
-import com.ws.hugs.data.db.MM131ArticleModel;
+import com.ws.hugs.api.MM131RequestCenter;
+import com.ws.hugs.app.picture.data.db.MM131VideoArticleModel;
+import com.ws.hugs.app.picture.paging.MM131ArticleCallback;
+import com.ws.hugs.app.picture.paging.MM131DataSource;
+import com.ws.hugs.app.picture.data.db.MM131ArticleModel;
 import com.ws.hugs.data.remote.MM131Article;
 import com.ws.hugs.data.remote.response.MPageResponse;
 import com.ws.hugs.db.mm131.ArticleDao;
-import com.ws.hugs.paging.MM131ArticleCallback;
-import com.ws.hugs.paging.MM131DataSource;
 import com.xcheng.retrofit.Call;
 import com.xcheng.retrofit.HttpError;
 
@@ -25,7 +25,6 @@ import androidx.paging.DataSource;
 import androidx.paging.LivePagedListBuilder;
 import androidx.paging.PagedList;
 
-import static com.ws.hugs.paging.MM131DataSource.CATEGORY;
 
 public class MM131Repository {
 
@@ -33,18 +32,19 @@ public class MM131Repository {
 
     private ArticleDao articleDao;
 
-    private RequestCenter requestCenter;
+    private MM131RequestCenter MM131RequestCenter;
 
-    public MM131Repository(ArticleDao articleDao, RequestCenter requestCenter) {
+    public MM131Repository(ArticleDao articleDao, MM131RequestCenter MM131RequestCenter) {
         this.articleDao = articleDao;
-        this.requestCenter = requestCenter;
+        this.MM131RequestCenter = MM131RequestCenter;
     }
 
     public LiveData<PagedList<MM131ArticleModel>> getArticle(String cate, long current,boolean firstLoad) {
+        Log.i(TAG,"开始发送请求   ");
         if (firstLoad){
-            refresh(cate, (int)current);
+            refreshPic(cate, (int)current);
         }else {
-            refreshById(cate,current);
+            refreshPicById(cate,current);
         }
         DataSource.Factory<Integer, MM131ArticleModel> userList = articleDao.getUserList();
         PagedList.Config build = (new PagedList.Config.Builder())
@@ -59,9 +59,9 @@ public class MM131Repository {
         return concertList;
     }
 
-    private void refresh(String cate, int current) {
-
-        requestCenter.getListArticle(cate, current).enqueue(new MM131ArticleCallback() {
+    private void refreshPic(String cate, int current) {
+        //请求数据 转化格式 并存储到本地
+        MM131RequestCenter.getListArticle(cate, current).enqueue(new MM131ArticleCallback() {
             @Override
             public void onError(Call<MPageResponse<MM131Article>> call, HttpError error) {
 
@@ -105,9 +105,9 @@ public class MM131Repository {
         });
     }
 
-    private void refreshById(String cate, long id) {
+    private void refreshPicById(String cate, long id) {
 
-        requestCenter.getListArticleById(id).enqueue(new MM131ArticleCallback() {
+        MM131RequestCenter.getListArticleById(id).enqueue(new MM131ArticleCallback() {
             @Override
             public void onError(Call<MPageResponse<MM131Article>> call, HttpError error) {
 
@@ -150,6 +150,9 @@ public class MM131Repository {
             }
         });
     }
+
+
+
 }
 
 

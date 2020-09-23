@@ -1,27 +1,23 @@
-package com.ws.hugs.paging;
+package com.ws.hugs.app.picture.paging;
 
-import android.app.Application;
-import android.content.Context;
 import android.util.Log;
-import android.view.WindowManager;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.paging.PageKeyedDataSource;
 
 import com.ws.hugs.HugApplication;
-import com.ws.hugs.api.RequestCenter;
+import com.ws.hugs.api.MM131RequestCenter;
 import com.ws.hugs.api.RequestManager;
-import com.ws.hugs.data.db.MM131ArticleModel;
+import com.ws.hugs.app.picture.data.db.MM131ArticleModel;
 import com.ws.hugs.data.remote.MM131Article;
 import com.ws.hugs.data.remote.response.MPageResponse;
 import com.xcheng.retrofit.Call;
-import com.xcheng.retrofit.Callback;
 import com.xcheng.retrofit.HttpError;
 
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.paging.PageKeyedDataSource;
 
 public class MM131DataSource extends PageKeyedDataSource<Integer, MM131ArticleModel> {
 
@@ -33,8 +29,8 @@ public class MM131DataSource extends PageKeyedDataSource<Integer, MM131ArticleMo
 
     @Override
     public void loadInitial(@NonNull LoadInitialParams<Integer> params, @NonNull LoadInitialCallback<Integer, MM131ArticleModel> callback) {
-        RequestCenter requestCenter = RequestManager.getRequestCenter();
-        Call<MPageResponse<MM131Article>> listArticle = requestCenter.getListArticle(CATEGORY, FIRST_PAGE);
+        MM131RequestCenter MM131RequestCenter = RequestManager.getRequestCenter();
+        Call<MPageResponse<MM131Article>> listArticle = MM131RequestCenter.getListArticle(CATEGORY, FIRST_PAGE);
 
 
         listArticle.enqueue(new MM131ArticleCallback() {
@@ -58,7 +54,7 @@ public class MM131DataSource extends PageKeyedDataSource<Integer, MM131ArticleMo
                     mm131ArticleModel.titleCode = e.getTitleCode();
                     mm131ArticleModel.width = e.getWidth();
 
-                    float minwidth = new BigDecimal(e.getHeight()).divide(new BigDecimal(e.getWidth())).floatValue()* HugApplication.phoneWidth;
+                    float minwidth = new BigDecimal(e.getHeight()).divide(new BigDecimal(e.getWidth()),BigDecimal.ROUND_HALF_UP).floatValue()* HugApplication.phoneWidth;
                     mm131ArticleModel.minHeight = (int)minwidth+1;
                     mm131ArticleModel.ftpPath = e.getFtpPath();
                     return mm131ArticleModel;
@@ -115,7 +111,7 @@ public class MM131DataSource extends PageKeyedDataSource<Integer, MM131ArticleMo
                             mm131ArticleModel.title = e.getTitle();
                             mm131ArticleModel.titleCode = e.getTitleCode();
                             mm131ArticleModel.width = e.getWidth();
-                            float minwidth = new BigDecimal(e.getHeight()).divide(new BigDecimal(e.getWidth())).floatValue()* HugApplication.phoneWidth;
+                            float minwidth = new BigDecimal(e.getHeight()).divide(new BigDecimal(e.getWidth()),BigDecimal.ROUND_HALF_UP).floatValue()* HugApplication.phoneWidth;
                             mm131ArticleModel.minHeight = (int)minwidth+1;
 
                             mm131ArticleModel.ftpPath = e.getFtpPath();

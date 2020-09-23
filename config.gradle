@@ -84,9 +84,11 @@ ext {
 
             //ftp
             // https://mvnrepository.com/artifact/commons-net/commons-net
-            "commons-net"           : "commons-net:commons-net:3.7"
-
-
+            "commons-net"           : "commons-net:commons-net:3.7",
+            //视频播放组件
+            "exoplayer"             : "com.google.android.exoplayer:exoplayer-core:2.8.4",
+            "exoplayer-ui"          : "com.google.android.exoplayer:exoplayer-ui:2.8.4",
+            "viewpager"             : "androidx.viewpager2:viewpager2:1.0.0"
 
     ]
 }

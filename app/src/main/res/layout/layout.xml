@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="video"
+            type="com.ws.hugs.app.picture.data.remote.VideoArticleDto" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:src="@{video.imgUrl}}"
+            android:scaleType="centerCrop"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:id="@+id/video_img"
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            />
+        <TextView
+            app:layout_constraintTop_toTopOf="parent"
+            android:id="@+id/title_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/black_gradient_vitual"
+            android:layout_margin="6dp"
+            android:textSize="19sp"
+            android:text="@{video.title}"
+            android:textColor="#ffffff"/>
+        <RelativeLayout
+            app:layout_constraintTop_toBottomOf="@id/video_img"
+            android:layout_width="match_parent"
+            android:layout_height="40dp">
+
+            <ImageView
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="4dp"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/l1"
+                android:id="@+id/dianzan_pic"
+                android:scaleType="centerCrop"
+                android:layout_width="26dp"
+                android:layout_height="26dp"/>
+            <TextView
+                android:id="@+id/dianzan_txt"
+                android:layout_marginRight="6dp"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/dianzan_pic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{video.dianzan}"
+                android:textColor="@color/qmui_config_color_gray_1"
+                android:textSize="18sp"/>
+
+
+            <ImageView
+                android:layout_toRightOf="@id/dianzan_txt"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="4dp"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/l1"
+                android:id="@+id/pinglun_pic"
+                android:scaleType="centerCrop"
+                android:layout_width="26dp"
+                android:layout_height="26dp"/>
+            <TextView
+                android:id="@+id/pinglun_txt"
+                android:layout_marginRight="6dp"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/pinglun_pic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{video.pinglun}"
+                android:textColor="@color/qmui_config_color_gray_1"
+                android:textSize="18sp"/>
+
+            <ImageView
+                android:layout_toRightOf="@id/pinglun_txt"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="4dp"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/l1"
+                android:id="@+id/aixin_pic"
+                android:scaleType="centerCrop"
+                android:layout_width="26dp"
+                android:layout_height="26dp"/>
+            <TextView
+                android:id="@+id/aixin_txt"
+                android:layout_marginRight="6dp"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/aixin_pic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{video.aixin}"
+                android:textColor="@color/qmui_config_color_gray_1"
+                android:textSize="18sp"/>
+            <TextView
+                android:layout_centerVertical="true"
+                android:text=". . ."
+                android:textColor="@color/qmui_config_color_gray_1"
+                android:textFontWeight="10000"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@mipmap/l6"
+                android:layout_alignParentRight="true"/>
+        </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
