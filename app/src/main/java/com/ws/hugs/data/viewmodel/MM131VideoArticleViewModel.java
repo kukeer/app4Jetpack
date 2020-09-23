@@ -5,14 +5,11 @@ import android.app.Application;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
-import androidx.paging.LivePagedList;
 import androidx.paging.LivePagedListBuilder;
 import androidx.paging.PagedList;
 
 import com.ws.hugs.api.MM131RequestCenter;
-import com.ws.hugs.app.picture.acticity.main.fragment.VideoViewModel;
 import com.ws.hugs.app.picture.data.db.MM131VideoArticleModel;
-import com.ws.hugs.app.picture.paging.ArticleBoundryCallBack;
 import com.ws.hugs.app.picture.paging.VideoArticleBoundryCallBack;
 import com.ws.hugs.db.HugsDatabase;
 
@@ -26,5 +23,8 @@ public class MM131VideoArticleViewModel extends AndroidViewModel {
     }
     public LiveData<PagedList<MM131VideoArticleModel>> mm131ArticleViewModelLiveData;
 
+    public void refreshData(){
+        HugsDatabase.getInstance(getApplication()).videoArticleDao().clear();
+    }
 
 }

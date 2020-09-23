@@ -12,25 +12,27 @@ import androidx.paging.PagedListAdapter;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.gson.Gson;
 import com.ws.hugs.R;
 import com.ws.hugs.app.picture.data.db.MM131VideoArticleModel;
 import com.ws.hugs.app.picture.data.remote.VideoArticleDto;
+import com.ws.hugs.data.viewmodel.MM131ArticleViewModel;
 import com.ws.hugs.databinding.LayoutBindingImpl;
 
-public class VideoAdapter extends PagedListAdapter<VideoArticleDto, Holder> {
+public class VideoAdapter extends PagedListAdapter<MM131VideoArticleModel, Holder> {
 
 
     Context context;
 
-    public static  DiffUtil.ItemCallback DIFF_CALLBACK = new DiffUtil.ItemCallback<VideoArticleDto>() {
+    public static  DiffUtil.ItemCallback DIFF_CALLBACK = new DiffUtil.ItemCallback<MM131VideoArticleModel>() {
         @Override
-        public boolean areItemsTheSame(@NonNull VideoArticleDto oldItem, @NonNull VideoArticleDto newItem) {
-            return oldItem.getVideoCode()==newItem.getVideoCode();
+        public boolean areItemsTheSame(@NonNull MM131VideoArticleModel oldItem, @NonNull MM131VideoArticleModel newItem) {
+            return oldItem.videoCode==newItem.videoCode;
         }
 
         @Override
-        public boolean areContentsTheSame(@NonNull VideoArticleDto oldItem, @NonNull VideoArticleDto newItem) {
-            return oldItem.getVideoCode()==newItem.getVideoCode();
+        public boolean areContentsTheSame(@NonNull MM131VideoArticleModel oldItem, @NonNull MM131VideoArticleModel newItem) {
+            return oldItem.videoCode==newItem.videoCode;
         }
 
     };
@@ -48,7 +50,8 @@ public class VideoAdapter extends PagedListAdapter<VideoArticleDto, Holder> {
 
     @Override
     public void onBindViewHolder(@NonNull Holder holder, int position) {
-        holder.databinding.setVideo(getItem(position));
+        Gson gson = new Gson();
+        holder.databinding.setVideo(gson.fromJson(gson.toJson(getItem(position)),VideoArticleDto.class));
     }
 }
 class Holder extends RecyclerView.ViewHolder{

@@ -40,4 +40,8 @@ public class MM131ArticleViewModel extends AndroidViewModel {
                 .setBoundaryCallback(new ArticleBoundryCallBack(application)).build();
 
     }
+
+    public void refreshData(){
+        HugsDatabase.getInstance(getApplication()).articleDao().clear();
+    }
 }

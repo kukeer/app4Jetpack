@@ -18,6 +18,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.SimpleItemAnimator;
 
 import com.scwang.smart.refresh.layout.SmartRefreshLayout;
+import com.scwang.smart.refresh.layout.api.RefreshLayout;
+import com.scwang.smart.refresh.layout.listener.OnRefreshListener;
 import com.ws.hugs.R;
 import com.ws.hugs.app.picture.paging.MyAdapter;
 import com.ws.hugs.app.picture.data.db.MM131ArticleModel;
@@ -40,8 +42,7 @@ public class ImageViewerFragment extends Fragment {
 //        ImageViewerAdpaterBinding dataBinding = DataBindingUtil.bind(inflater.inflate(R.layout.image_viewer_adpater, container, false));
         View inflate = inflater.inflate(R.layout.image_viewer_adpater, container, false);
 
-        if (recyclerView ==null){
-            }
+
         recyclerView = inflate.findViewById(R.id.recycle_view);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(linearLayoutManager);
@@ -51,7 +52,7 @@ public class ImageViewerFragment extends Fragment {
         MyAdapter myAdapter = new MyAdapter(getContext());
 
         recyclerView.setAdapter(myAdapter);
-//        recyclerView.set
+
         MM131ArticleViewModel viewModel = new ViewModelProvider(this).get(MM131ArticleViewModel.class);
         viewModel.mm131ArticleViewModelLiveData.observe(getActivity(), new Observer<PagedList<MM131ArticleModel>>() {
             @Override
@@ -61,6 +62,13 @@ public class ImageViewerFragment extends Fragment {
             }
         });
 
+        smartRefreshLayout = inflate.findViewById(R.id.smart_refresh);
+        smartRefreshLayout.setOnRefreshListener(new OnRefreshListener() {
+            @Override
+            public void onRefresh(@NonNull RefreshLayout refreshLayout) {
+                viewModel.refreshData();
+            }
+        });
         return inflate;
     }
 
