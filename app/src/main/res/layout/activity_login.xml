@@ -5,20 +5,31 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
-    android:background="@mipmap/l6"
-    tools:context=".activity.login.LoginActivity">
+    tools:context=".activity.login.login.LoginActivity">
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:textColor="@color/qmui_config_color_75_white"
-        android:layout_gravity="center_vertical"
+    <com.google.android.material.textview.MaterialTextView
+        style="@style/Widget.MaterialComponents.TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hugs"
+        android:textColor="#1B88EE"
+        android:textSize="50sp"
+        app:layout_constraintBottom_toBottomOf="@id/name_input"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textview.MaterialTextView
+        style="@style/Widget.MaterialComponents.TextView"
         android:id="@+id/inpt_name_pre"
         android:layout_width="80dp"
-        android:layout_height="40dp"
+        android:layout_height="30dp"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="200dp"
         android:gravity="center_vertical|right"
         android:text="邮箱:"
-        android:textSize="15sp"
+        android:textColor="@color/qmui_config_color_blue"
+        android:textSize="20sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
 
@@ -26,80 +37,78 @@
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/name_input"
-        android:paddingLeft="12dp"
         android:layout_width="0dp"
-        android:layout_height="40dp"
+        android:layout_height="30dp"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="200dp"
         android:layout_marginRight="30dp"
-        android:maxLines="1"
-        android:background="@drawable/edit_rounded"
-        android:textColor="@color/qmui_config_color_black"
+        android:background="@drawable/edit_little_rounded"
         android:inputType="text"
+        android:maxLines="1"
+        android:paddingLeft="12dp"
+        android:textColor="@color/qmui_config_color_black"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toRightOf="@id/inpt_name_pre"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.appcompat.widget.AppCompatTextView
+    <com.google.android.material.textview.MaterialTextView
+        style="@style/Widget.MaterialComponents.TextView"
         android:id="@+id/inpt_pw_pre"
-
         android:layout_width="80dp"
-        android:layout_height="40dp"
+        android:layout_height="30dp"
         android:layout_marginLeft="30dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:gravity="center_vertical|right"
         android:text="密码:"
-        android:textSize="15sp"
+        android:textColor="@color/qmui_config_color_blue"
+        android:textSize="20sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/inpt_name_pre" />
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/pw_input"
         android:layout_width="0dp"
-        android:paddingLeft="12dp"
-        android:layout_height="40dp"
+        android:layout_height="30dp"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:layout_marginRight="30dp"
-        android:background="@drawable/edit_rounded"
+        android:background="@drawable/edit_little_rounded"
         android:inputType="textPassword"
         android:maxLines="1"
+        android:paddingLeft="12dp"
         app:layout_constraintLeft_toRightOf="@id/inpt_name_pre"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/inpt_name_pre" />
 
-    <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
-        app:qmui_borderColor="#00000000"
+
+    <com.google.android.material.button.MaterialButton
+        style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
         android:id="@+id/login_btn"
-        android:layout_marginTop="30dp"
-        android:layout_width="120dp"
-        android:layout_height="40dp"
-        android:layout_marginLeft="30dp"
-        android:text="登录"
+        android:layout_width="180dp"
+        android:layout_height="50dp"
+        app:cornerRadius="8dp"
+        android:layout_marginTop="50dp"
+        android:text="登    录"
+        android:textColor="#ffffff"
+        android:textSize="18sp"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:qmui_backgroundColor="@color/btn_filled_blue_bg_normal"
-        android:textColor="@color/qmui_config_color_white"
-        app:layout_constraintTop_toBottomOf="@id/inpt_pw_pre"/>
-    <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
-        app:qmui_borderColor="#00000000"
-        android:id="@+id/cancel_btn"
-        android:layout_marginTop="30dp"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginRight="30dp"
-        android:layout_width="120dp"
-        android:layout_height="40dp"
-        android:layout_marginLeft="30dp"
-        android:textColor="@color/qmui_config_color_white"
-        android:text="注册"
-        app:qmui_backgroundColor="#048e2c"
-        app:layout_constraintTop_toBottomOf="@id/inpt_pw_pre"/>
-    <TextView
-        android:gravity="center"
-        android:textSize="40sp"
-        android:textColor="@color/qmui_config_color_75_white"
-        android:text="返回"
-        android:background="@color/qmui_config_color_blue"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"/>
+        app:layout_constraintTop_toBottomOf="@id/pw_input" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/cancel_btn"
+        style="@style/Widget.MaterialComponents.FloatingActionButton"
+        android:layout_width="180dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:text="取    消"
+        android:textColor="#ffffff"
+        android:textSize="18sp"
+        app:cornerRadius="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/login_btn" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

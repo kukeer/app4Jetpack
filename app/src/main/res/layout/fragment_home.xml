@@ -17,9 +17,8 @@
         android:layout_width="wrap_content"
         android:layout_marginBottom="10dp"
     >
-        <com.qmuiteam.qmui.widget.QMUIRadiusImageView2
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/mm131_routing"
-            app:qmui_corner_radius="6dp"
             android:tooltipText="mm131"
             android:src="@drawable/mm"
             android:layout_height="50dp"

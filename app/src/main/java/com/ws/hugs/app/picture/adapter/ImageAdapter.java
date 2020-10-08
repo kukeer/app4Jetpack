@@ -1,5 +1,6 @@
 package com.ws.hugs.app.picture.adapter;
 
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Log;
 import android.view.View;
@@ -14,11 +15,11 @@ import com.youth.banner.adapter.BannerAdapter;
 
 import java.util.List;
 
-public class ImageAdapter extends BannerAdapter<BannerImage, ImageAdapter.BannerViewHolder> {
+public class ImageAdapter extends BannerAdapter<Bitmap, ImageAdapter.BannerViewHolder> {
 
     private String TAG = getClass().getSimpleName();
 
-    public ImageAdapter(List<BannerImage> mDatas) {
+    public ImageAdapter(List<Bitmap> mDatas) {
         //设置数据，也可以调用banner提供的方法,或者自己在adapter中实现
         super(mDatas);
     }
@@ -41,11 +42,12 @@ public class ImageAdapter extends BannerAdapter<BannerImage, ImageAdapter.Banner
     }
 
     @Override
-    public void onBindView(BannerViewHolder holder, BannerImage data, int position, int size) {
-        StringBuilder stringBuilder = new StringBuilder(data.getImgUrl());
-        int i = stringBuilder.lastIndexOf("/");
-        stringBuilder.replace(i,i,"/");
-        String replace = stringBuilder.toString().replace(".jpg", ".html");
+    public void onBindView(BannerViewHolder holder, Bitmap data, int position, int size) {
+        holder.imageView.setImageBitmap(data);
+//        StringBuilder stringBuilder = new StringBuilder(data.getImgUrl());
+//        int i = stringBuilder.lastIndexOf("/");
+//        stringBuilder.replace(i,i,"/");
+//        String replace = stringBuilder.toString().replace(".jpg", ".html");
 
 //        GlideUrl newUrl= new GlideUrl(stringBuilder.toString(), new LazyHeaders.Builder()
 //                .addHeader("referer",replace)

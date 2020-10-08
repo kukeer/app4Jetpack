@@ -24,7 +24,7 @@ public class MM131VideoArticleModel {
     @ColumnInfo(typeAffinity = ColumnInfo.INTEGER)
     public int aixin;
 
-    @ColumnInfo(typeAffinity = ColumnInfo.BLOB)
+    @ColumnInfo(typeAffinity = ColumnInfo.INTEGER)
     public boolean collect;
 
     @ColumnInfo(typeAffinity = ColumnInfo.TEXT)
@@ -36,6 +36,7 @@ public class MM131VideoArticleModel {
     @ColumnInfo(typeAffinity = ColumnInfo.UNDEFINED)
     public long videoCode;
 
-
+    @ColumnInfo(typeAffinity = ColumnInfo.INTEGER)
+    public int mesureWidth;
 
 }

@@ -3,6 +3,8 @@ package com.ws.hugs.app.picture.acticity.home;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager2.widget.ViewPager2;
 
 import okhttp3.ResponseBody;
 
@@ -17,15 +19,15 @@ import android.view.MotionEvent;
 import android.view.VelocityTracker;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.Scroller;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.qmuiteam.qmui.widget.QMUIPagerAdapter;
-import com.qmuiteam.qmui.widget.QMUIViewPager;
 import com.ws.hugs.R;
 import com.ws.hugs.api.RequestManager;
+import com.ws.hugs.app.picture.adapter.ImageAdapter;
 import com.ws.hugs.data.event.EventMessage;
 import com.ws.hugs.data.remote.MM131Abum;
 import com.ws.hugs.data.remote.MM131Picture;
@@ -42,6 +44,7 @@ import org.greenrobot.eventbus.Subscribe;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class MainActivity extends AppCompatActivity
         implements GestureDetector.OnGestureListener {
@@ -63,8 +66,8 @@ public class MainActivity extends AppCompatActivity
     //    ImageView imageView;
     int currentIndex = 0;
     boolean showIndex = false;
-    QMUIViewPager viewPager;
-    QMUIPagerAdapter qmuiPagerAdapter;
+    ViewPager2 viewPager;
+    ImageAdapter imageAdapter;
     TextView back;
 
     @Override
@@ -85,7 +88,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 //        setTheme(R.style.SplashTheme);
         setContentView(R.layout.activity_main);
         EventBus.getDefault().register(this);
@@ -101,74 +104,15 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-        qmuiPagerAdapter = new QMUIPagerAdapter() {
-            @NonNull
-            @Override
-            protected Object hydrate(@NonNull ViewGroup container, int position) {
-                ImageView imageView = new ImageView(container.getContext());
-//                imageView.set
 
-                return imageView;
-            }
-
-            @Override
-            protected void populate(@NonNull ViewGroup container, @NonNull Object item, int position) {
-                ImageView imageView = (ImageView) item;
-                Glide.with(container.getContext()).load(list.get(position)).into(imageView);
-//                Log.i(TAG,"imageView 开始加载 "+"http://139.198.191.101:9999/getPicById?id="+list.get(position).getPicId());
-//                Glide.with(container.getContext()).load("http://139.198.191.101:9999/getPicById?id="+list.get(position).getPicId());
-
-
-                imageView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Log.i(TAG, "点击了 ");
-                        if (showIndex) {
-//            v.gone();
-                            topLan.setVisibility(View.GONE);
-                            showIndex = false;
-                        } else {
-                            topLan.setVisibility(View.VISIBLE);
-//                            currentIndex = getItemPosition(item);
-                            title.setText("第 " + currentIndex + " 张");
-                            showIndex = true;
-                        }
-                    }
-                });
-                container.addView(imageView);
-
-            }
-
-            @Override
-            protected void destroy(@NonNull ViewGroup container, int position, @NonNull Object object) {
-                ImageView imageView = (ImageView) object;
-
-                container.removeView(imageView);
-            }
-
-
-            @Override
-            public int getCount() {
-                return list.size();
-            }
-
-
-            @Override
-            public boolean isViewFromObject(@NonNull View view, @NonNull Object object) {
-                return view == object;
-            }
-
-
-        };
-
-        viewPager.setAdapter(qmuiPagerAdapter);
+        viewPager.setAdapter(new ImageAdapter(list));
         viewPager.setOnScrollChangeListener(new View.OnScrollChangeListener() {
 
 
             @Override
             public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
                 int currentItem = viewPager.getCurrentItem();
-                int count = viewPager.getAdapter().getCount();
+                int count = viewPager.getAdapter().getItemCount();
                 if (currentItem != currentIndex) {
                     currentIndex = currentItem;
                     title.setText(("第 " + currentIndex + " 张"));
@@ -242,8 +186,8 @@ public class MainActivity extends AppCompatActivity
                 public void onSuccess(Call<MResponse<MM131Abum>> call, MResponse<MM131Abum> mm131AbumMResponse) {
                     MM131Abum t = mm131AbumMResponse.getT();
                     List<MM131Picture> collect = t.getList();
-                    for (int i = 0; i < (collect.size()); i++) {
-                        Call<ResponseBody> bodyCall = RequestManager.getRequestCenter().getPicById(collect.get(i).getPicId() + "");
+                    for (AtomicInteger i = new AtomicInteger(0); i.get() < (collect.size()); i.addAndGet(1)) {
+                        Call<ResponseBody> bodyCall = RequestManager.getRequestCenter().getPicById(collect.get(i.get()).getPicId() + "");
                         bodyCall.enqueue(new Callback<ResponseBody>(){
 
                             @Override
@@ -272,7 +216,9 @@ public class MainActivity extends AppCompatActivity
                             public void onSuccess(Call<ResponseBody> call, ResponseBody response) {
                                 InputStream inputStream = response.byteStream();
                                 list.add(BitmapFactory.decodeStream(inputStream));
-                                viewPager.getAdapter().notifyDataSetChanged();
+//                                viewPager.getAdapter().
+                                viewPager.getAdapter().notifyItemChanged(list.size());
+//                                viewPager.getAdapter().notifyDataSetChanged();
                             }
 
                             @Override
@@ -286,6 +232,7 @@ public class MainActivity extends AppCompatActivity
 //                            e.printStackTrace();
 //                        }
                     }
+
 
                 }
 

@@ -1,7 +1,7 @@
 package com.ws.hugs.common.utils;
 
 import org.apache.commons.net.ftp.FTPClient;
-import org.apache.commons.net.ftp.FTPClientConfig;
+//import org.apache.commons.net.ftp.FTPClientConfig;
 import org.apache.commons.net.ftp.FTPFile;
 import org.apache.commons.net.ftp.FTPReply;
 
@@ -84,7 +84,7 @@ public class FTP {
      */
     public boolean openConnect() throws IOException {
         // 中文转码
-        ftpClient.setControlEncoding("UTF-8");
+//        ftpClient.setControlEncoding("UTF-8");
         int reply; // 服务器响应值
         // 连接至服务器
         ftpClient.connect(hostName);
@@ -105,9 +105,9 @@ public class FTP {
             throw new IOException("connect fail: " + reply);
         } else {
             // 获取登录信息
-            FTPClientConfig config = new FTPClientConfig(ftpClient.getSystemType().split(" ")[0]);
-            config.setServerLanguageCode("zh");
-            ftpClient.configure(config);
+//            FTPClientConfig config = new FTPClientConfig(ftpClient.getSystemType().split(" ")[0]);
+//            config.setServerLanguageCode("zh");
+//            ftpClient.configure(config);
             // 使用被动模式设为默认
             ftpClient.enterLocalPassiveMode();
             // 二进制文件支持

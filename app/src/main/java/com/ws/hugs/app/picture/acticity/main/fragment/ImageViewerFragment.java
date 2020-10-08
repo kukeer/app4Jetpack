@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -35,6 +36,10 @@ public class ImageViewerFragment extends Fragment {
     RecyclerView recyclerView;
 
     SmartRefreshLayout smartRefreshLayout;
+
+    public static ImageViewerFragment newInstance() {
+        return new ImageViewerFragment();
+    }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -67,6 +72,7 @@ public class ImageViewerFragment extends Fragment {
             @Override
             public void onRefresh(@NonNull RefreshLayout refreshLayout) {
                 viewModel.refreshData();
+                smartRefreshLayout.finishRefresh();
             }
         });
         return inflate;

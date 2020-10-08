@@ -1,6 +1,8 @@
 package com.ws.hugs.app.picture.adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,10 +16,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.gson.Gson;
 import com.ws.hugs.R;
+import com.ws.hugs.app.picture.acticity.videoplayer.VideoPlayActivity;
 import com.ws.hugs.app.picture.data.db.MM131VideoArticleModel;
 import com.ws.hugs.app.picture.data.remote.VideoArticleDto;
-import com.ws.hugs.data.viewmodel.MM131ArticleViewModel;
-import com.ws.hugs.databinding.LayoutBindingImpl;
+import com.ws.hugs.databinding.LayoutBinding;
 
 public class VideoAdapter extends PagedListAdapter<MM131VideoArticleModel, Holder> {
 
@@ -44,7 +46,8 @@ public class VideoAdapter extends PagedListAdapter<MM131VideoArticleModel, Holde
     @NonNull
     @Override
     public Holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        LayoutBindingImpl inflate = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), R.layout.layout, parent, true);
+        LayoutBinding inflate = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), R.layout.layout, parent, false);
+
         return new Holder(inflate);
     }
 
@@ -52,12 +55,21 @@ public class VideoAdapter extends PagedListAdapter<MM131VideoArticleModel, Holde
     public void onBindViewHolder(@NonNull Holder holder, int position) {
         Gson gson = new Gson();
         holder.databinding.setVideo(gson.fromJson(gson.toJson(getItem(position)),VideoArticleDto.class));
+        holder.databinding.setListener(this);
+    }
+
+
+    public void click2(VideoArticleDto dto){
+        Log.i("VIDEO","dto "+dto);
+        Intent intent = new Intent(context, VideoPlayActivity.class);
+        intent.putExtra("ik",dto.getVideoCode());
+        context.startActivity(intent);
     }
 }
 class Holder extends RecyclerView.ViewHolder{
 
-    LayoutBindingImpl databinding;
-    public Holder(@NonNull LayoutBindingImpl itemView) {
+    LayoutBinding databinding;
+    public Holder(@NonNull LayoutBinding itemView) {
         super(itemView.getRoot());
         databinding = itemView;
 

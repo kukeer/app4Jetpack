@@ -36,7 +36,7 @@ public interface MM131RequestCenter {
 
 
     @GET("/play/list")
-    Call<MPageResponse<VideoArticleDto>> getVideoList(@Query("current") int current);
+    Call<MPageResponse<VideoArticleDto>> getVideoList(@Query("offset") int current);
 
 
 }

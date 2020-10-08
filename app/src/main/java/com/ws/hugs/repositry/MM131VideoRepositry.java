@@ -9,6 +9,7 @@ import androidx.paging.DataSource;
 import androidx.paging.LivePagedListBuilder;
 import androidx.paging.PagedList;
 
+import com.ws.hugs.HugApplication;
 import com.ws.hugs.api.MM131RequestCenter;
 import com.ws.hugs.api.RequestManager;
 import com.ws.hugs.app.picture.data.db.MM131ArticleModel;
@@ -22,6 +23,7 @@ import com.xcheng.retrofit.Call;
 import com.xcheng.retrofit.Callback;
 import com.xcheng.retrofit.HttpError;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -67,7 +69,12 @@ public class MM131VideoRepositry {
             @Override
             public void onSuccess(Call<MPageResponse<VideoArticleDto>> call, MPageResponse<VideoArticleDto> videoArticleDtoMPageResponse) {
                 List<MM131VideoArticleModel> collect = videoArticleDtoMPageResponse.getData().stream().map(e -> transfrom(e)).collect(Collectors.toList());
-                articleDao.insertArticles(collect);
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        articleDao.insertArticles(collect);
+                    }
+                }).start();
             }
 
             @Override
@@ -84,6 +91,10 @@ public class MM131VideoRepositry {
                 model.imgUrl = dto.getImgUrl();
                 model.videoCode = dto.getVideoCode();
                 model.title = dto.getTitle();
+                model.mesureWidth = (int) (new BigDecimal(dto.getHeight()).divide(new BigDecimal(dto.getWidth()),BigDecimal.ROUND_HALF_UP).floatValue()* HugApplication.phoneWidth);
+                Log.i(TAG,"getHeight "+dto.getHeight());
+                Log.i(TAG,"getWidth "+dto.getWidth());
+                Log.i(TAG,"model "+model.mesureWidth);
                 return model;
             }
         });
@@ -113,6 +124,7 @@ public class MM131VideoRepositry {
         if (count%MM131RequestCenter.DEFAULT_PAGE_SIZE!=0){
             Log.w(TAG,"mm131video的分页页面大小可能不是默认的分页大小");
         }
+        Log.i(TAG,"视频 count为 "+count);
         return count/MM131RequestCenter.DEFAULT_PAGE_SIZE;
     }
 

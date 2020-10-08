@@ -38,4 +38,27 @@ public class MM131BindingAdapter {
         }
     }
 
+    @BindingAdapter("mm131pic")
+    public static void setImage1(ImageView image, String imageUrl){
+        Log.i(TAG,"即将下载图片"+imageUrl);
+        if (!TextUtils.isEmpty(imageUrl)){
+
+
+            Log.i(TAG,"正在设置图片 "+"http://www.zzhiot.top:9999/getPicById?id="+imageUrl);
+
+            Glide.with(image).load("http://www.zzhiot.top:9999/getPicById?id="+imageUrl).error(R.mipmap.l2).into(image);
+
+//            SingleWorker singleWorker = SingleWorker.getInstance();
+//            singleWorker.execute(singleWorker.generateTask(imageUrl, new FTPCallback() {
+//
+//                @Override
+//                public void onResponse(Bitmap bitmap) {
+//                    image.setImageBitmap(bitmap);
+//                }
+//            }));
+        }else{
+            image.setImageBitmap(BitmapFactory.decodeResource(image.getContext().getResources(), R.mipmap.l1));
+        }
+    }
+
 }

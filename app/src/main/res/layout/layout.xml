@@ -6,20 +6,24 @@
         <variable
             name="video"
             type="com.ws.hugs.app.picture.data.remote.VideoArticleDto" />
+        <variable
+            name="listener"
+            type="com.ws.hugs.app.picture.adapter.VideoAdapter" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="240dp">
 
         <ImageView
-            android:src="@{video.imgUrl}}"
+            mm131pic="@{video.imgUrl}"
             android:scaleType="centerCrop"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:id="@+id/video_img"
             android:layout_width="match_parent"
-            android:layout_height="220dp"
+            android:layout_height="200dp"
+            android:onClick="@{()->listener.click2(video)}"
             />
         <TextView
             app:layout_constraintTop_toTopOf="parent"
@@ -27,11 +31,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/black_gradient_vitual"
-            android:layout_margin="6dp"
             android:textSize="19sp"
             android:text="@{video.title}"
             android:textColor="#ffffff"/>
         <RelativeLayout
+            android:background="@color/qmui_config_color_gray_9"
             app:layout_constraintTop_toBottomOf="@id/video_img"
             android:layout_width="match_parent"
             android:layout_height="40dp">

@@ -38,8 +38,13 @@ public class VideoArticleBoundryCallBack extends PagedList.BoundaryCallback<MM13
     @Override
     public void onItemAtEndLoaded(@NotNull MM131VideoArticleModel itemAtEnd) {
         super.onItemAtEndLoaded(itemAtEnd);
-        int offset = mm131Repository.getOffsetByEndItem();
-        mm131Repository.getVideoArticle(offset);
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                int offset = mm131Repository.getOffsetByEndItem();
+                mm131Repository.getVideoArticle(offset);
+            }
+        }).start();
 
     }
 }

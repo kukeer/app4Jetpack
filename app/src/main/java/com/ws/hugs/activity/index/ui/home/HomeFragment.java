@@ -43,8 +43,8 @@ public class HomeFragment extends Fragment {
     public void setOnclick(View view){
         switch (view.getId()){
             case R.id.mm131_routing:
-                gotoActivity(VideoPlayActivity.class);
-//                gotoActivity(PicActivity.class);
+//                gotoActivity(VideoPlayActivity.class);
+                gotoActivity(PicActivity.class);
                 break;
             default:
                 gotoActivity(PicActivity.class);

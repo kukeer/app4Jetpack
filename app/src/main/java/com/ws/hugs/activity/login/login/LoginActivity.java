@@ -5,7 +5,6 @@ import androidx.core.hardware.fingerprint.FingerprintManagerCompat;
 
 import android.os.Bundle;
 
-import com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton;
 import com.ws.hugs.R;
 
 public class LoginActivity extends AppCompatActivity {
@@ -13,8 +12,7 @@ public class LoginActivity extends AppCompatActivity {
     private final String TAG = getClass().getSimpleName();
     FingerprintManagerCompat compat;
 
-    QMUIRoundButton login;
-    QMUIRoundButton toRegister;
+
 
 
     @Override

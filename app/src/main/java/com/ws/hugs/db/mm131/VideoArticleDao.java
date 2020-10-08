@@ -28,6 +28,9 @@ public interface VideoArticleDao {
     @Query("select * from mm131_video")
     DataSource.Factory<Integer,MM131VideoArticleModel> getUserList();
 
+
+    @Query("select * from mm131_video")
+    List<MM131VideoArticleModel> getUserArrayList();
     @Query("select count(*) from mm131_video")
     int getCount();
 }

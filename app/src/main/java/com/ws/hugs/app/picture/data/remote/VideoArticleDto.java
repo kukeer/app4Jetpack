@@ -6,14 +6,38 @@ public class VideoArticleDto {
     private String pinglun;
     private String aixin;
     private boolean collect;
-
+    private int mesureHeight;
+    private int width;
+    private int height;
     private String imgUrl;
 
     private String title;
 
     private long videoCode;
 
+    public int getMesureHeight() {
+        return mesureHeight;
+    }
 
+    public void setMesureHeight(int mesureHeight) {
+        this.mesureHeight = mesureHeight;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public void setWidth(int width) {
+        this.width = width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
+    }
 
     public String getDianzan() {
         return dianzan;

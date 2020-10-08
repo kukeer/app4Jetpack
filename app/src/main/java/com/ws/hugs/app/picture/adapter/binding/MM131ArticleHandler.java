@@ -6,14 +6,18 @@ import android.view.ViewGroup;
 
 import androidx.databinding.BindingAdapter;
 
+import com.ws.hugs.HugApplication;
+
+import java.math.BigDecimal;
+
 public class MM131ArticleHandler {
 
     @BindingAdapter("mm131height")
     public static void setLayoutHeight(View view, int height){
-        view.setMinimumHeight(height/2);
-//        Log.i("MM131ArticleHandler","  mm131height "+height);
-//        ViewGroup.LayoutParams layoutParams = view.getLayoutParams();
-//        layoutParams. = height;
+        Log.i("MM131ArticleHandler","  mm131height "+height);
+        ViewGroup.LayoutParams layoutParams = view.getLayoutParams();
+
+        layoutParams.height = height;
     }
 
 }

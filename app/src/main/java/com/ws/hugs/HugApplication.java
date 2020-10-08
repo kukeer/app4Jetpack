@@ -69,7 +69,9 @@ public class HugApplication extends Application {
     public static HugApplication getApplication(){
         return application;
     }
-
+//    static {
+//        System.loadLibrary("native-lib");
+//    }
 
     @Override
     public void onCreate() {
@@ -82,7 +84,6 @@ public class HugApplication extends Application {
     public static int phoneWidth = 0;
     public static int phoneHeight = 0;
     private void init() {
-
         SPUtils.initSp(getSharedPreferences("APPLICATION",Context.MODE_PRIVATE));
         WindowManager wm = (WindowManager) getApplicationContext().getSystemService(Context.WINDOW_SERVICE);
 //        SingleWorker.initContext(this);

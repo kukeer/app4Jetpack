@@ -42,6 +42,11 @@ public class MM131ArticleViewModel extends AndroidViewModel {
     }
 
     public void refreshData(){
-        HugsDatabase.getInstance(getApplication()).articleDao().clear();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                HugsDatabase.getInstance(getApplication()).articleDao().clear();
+            }
+        }).start();
     }
 }
