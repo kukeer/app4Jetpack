@@ -3,6 +3,7 @@ package com.ws.hugs.app.picture.acticity.home;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Lifecycle;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 
@@ -158,7 +159,6 @@ public class MainActivity extends AppCompatActivity
             String message = eventMessage.getMessage();
 
             Call<MResponse<MM131Abum>> imageList = RequestManager.getRequestCenter().getImageList(message, 0);
-//            imageList.bindToLifecycle()
             imageList.enqueue(new Callback<MResponse<MM131Abum>>() {
                 @Override
                 public void onStart(Call<MResponse<MM131Abum>> call) {
@@ -188,6 +188,7 @@ public class MainActivity extends AppCompatActivity
                     List<MM131Picture> collect = t.getList();
                     for (AtomicInteger i = new AtomicInteger(0); i.get() < (collect.size()); i.addAndGet(1)) {
                         Call<ResponseBody> bodyCall = RequestManager.getRequestCenter().getPicById(collect.get(i.get()).getPicId() + "");
+
                         bodyCall.enqueue(new Callback<ResponseBody>(){
 
                             @Override

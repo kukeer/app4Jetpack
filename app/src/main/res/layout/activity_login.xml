@@ -4,27 +4,32 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_gravity="center"
+    android:background="@color/qmui_config_color_10_white"
     tools:context=".activity.login.login.LoginActivity">
 
+    <!-- 登录界面 -->
+
+    <!-- 标题 -->
     <com.google.android.material.textview.MaterialTextView
         style="@style/Widget.MaterialComponents.TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Hugs"
-        android:textColor="#1B88EE"
+        android:textColor="@color/design_default_color_primary"
         android:textSize="50sp"
         app:layout_constraintBottom_toBottomOf="@id/name_input"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.496" />
 
+    <!-- 用户名 -->
     <com.google.android.material.textview.MaterialTextView
         style="@style/Widget.MaterialComponents.TextView"
         android:id="@+id/inpt_name_pre"
-        android:layout_width="80dp"
+        android:layout_width="60dp"
         android:layout_height="30dp"
-        android:layout_marginLeft="30dp"
+        android:layout_marginLeft="20dp"
         android:layout_marginTop="200dp"
         android:gravity="center_vertical|right"
         android:text="邮箱:"
@@ -35,6 +40,7 @@
 
         />
 
+    <!-- 用户名输入框 -->
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/name_input"
         android:layout_width="0dp"
@@ -52,12 +58,13 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!-- 密码 -->
     <com.google.android.material.textview.MaterialTextView
         style="@style/Widget.MaterialComponents.TextView"
         android:id="@+id/inpt_pw_pre"
-        android:layout_width="80dp"
+        android:layout_width="60dp"
         android:layout_height="30dp"
-        android:layout_marginLeft="30dp"
+        android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"
         android:gravity="center_vertical|right"
         android:text="密码:"
@@ -66,6 +73,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/inpt_name_pre" />
 
+    <!-- 密码输入框 -->
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/pw_input"
         android:layout_width="0dp"
@@ -81,13 +89,13 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/inpt_name_pre" />
 
-
+    <!-- 登录按钮 -->
     <com.google.android.material.button.MaterialButton
         style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
         android:id="@+id/login_btn"
-        android:layout_width="180dp"
+        android:layout_width="150dp"
         android:layout_height="50dp"
-        app:cornerRadius="8dp"
+        app:cornerRadius="5dp"
         android:layout_marginTop="50dp"
         android:text="登    录"
         android:textColor="#ffffff"
@@ -96,10 +104,22 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/pw_input" />
 
+    <!-- 注册界面 link -->
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:layout_marginLeft="10dp"
+        android:autoLink="all"
+        app:layout_constraintBaseline_toBaselineOf="@id/login_btn"
+        app:layout_constraintLeft_toRightOf="@id/login_btn"
+        android:text="还没有账号?"/>
+
+    <!-- 退出按钮 -->
     <com.google.android.material.button.MaterialButton
         android:id="@+id/cancel_btn"
         style="@style/Widget.MaterialComponents.FloatingActionButton"
-        android:layout_width="180dp"
+        android:layout_width="150dp"
         android:layout_height="50dp"
         android:layout_marginTop="20dp"
         android:text="取    消"
@@ -110,5 +130,65 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/login_btn" />
 
+
+    <!-- 更多登录方式 #提示 -->
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/more_login_way"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:text="更多登录方式"
+        android:textSize="12sp"
+        app:layout_constraintTop_toTopOf="@id/cancel_btn"/>
+
+
+
+    <!-- 按钮选项 -->
+    <LinearLayout
+        android:gravity="center"
+        android:layout_marginTop="12dp"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+
+        android:background="@color/qmui_config_color_10_white"
+        app:layout_constraintTop_toBottomOf="@id/more_login_way">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:layout_marginHorizontal="5dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:padding="4dp"
+            android:background="@color/qmui_config_color_10_white"
+            app:shapeAppearanceOverlay="@style/circleImageStyle"
+            android:src="@mipmap/zhifubao"/>
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:layout_marginHorizontal="5dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:padding="4dp"
+            app:shapeAppearanceOverlay="@style/circleImageStyle"
+            android:src="@mipmap/weixin"/>
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:layout_marginHorizontal="5dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@color/qmui_config_color_10_white"
+            app:shapeAppearanceOverlay="@style/circleImageStyle"
+            android:src="@mipmap/qq"/>
+        <com.google.android.material.imageview.ShapeableImageView
+            android:layout_marginHorizontal="5dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@color/qmui_config_color_10_white"
+            app:shapeAppearanceOverlay="@style/circleImageStyle"
+            android:src="@mipmap/xinlang"/>
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
