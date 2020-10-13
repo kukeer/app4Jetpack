@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MaterialComponents.Light.NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".app.picture.acticity.videoplayer.VideoPlayActivity"></activity>
+        <activity android:name=".app.book.activity.BookListActivity"></activity>
+        <activity android:name=".app.picture.acticity.videoplayer.VideoPlayActivity" />
         <activity android:name=".app.picture.acticity.main.PicActivity" />
         <activity
             android:name=".activity.login.login.LoginActivity"

@@ -15,10 +15,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.gson.Gson;
 import com.ws.hugs.R;
-import com.ws.hugs.app.picture.data.db.MM131ArticleModel;
+import com.ws.hugs.db.mm131.tb.MM131ArticleModel;
 import com.ws.hugs.data.event.EventMessage;
 import com.ws.hugs.data.remote.MM131Article;
-import com.ws.hugs.databinding.ArticleBinding;
+import com.ws.hugs.databinding.PicArticleBinding;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -52,15 +52,20 @@ public class MyAdapter extends PagedListAdapter<MM131ArticleModel, MyViewHolder>
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        ArticleBinding inflate = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), R.layout.article, parent, false);
+        PicArticleBinding inflate = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), R.layout.pic_article, parent, false);
         return new MyViewHolder(inflate);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+        Log.i(TAG,"onBindViewHolder "+position +" sum: "+getItemCount());
         MM131ArticleModel titleItem = getItem(position);
         Gson gson = new Gson();
+
         Log.i(TAG,"onBindViewHolder 启动"+titleItem);
+        if (titleItem  == null){
+            return;
+        }
         MM131Article mm131Article = gson.fromJson(gson.toJson(titleItem), MM131Article.class);
         holder.articleBinding.setArticle(mm131Article);
         holder.articleBinding.setAdapter(MyAdapter.this);
@@ -82,12 +87,11 @@ public class MyAdapter extends PagedListAdapter<MM131ArticleModel, MyViewHolder>
 
 }
 
-
 class MyViewHolder extends RecyclerView.ViewHolder {
 
-    ArticleBinding articleBinding;
+    PicArticleBinding articleBinding;
 
-    public MyViewHolder(@NonNull ArticleBinding itemView) {
+    public MyViewHolder(@NonNull PicArticleBinding itemView) {
         super(itemView.getRoot());
         Log.i("MyViewHolder", "MyViewHolder 初始化");
         articleBinding = itemView;

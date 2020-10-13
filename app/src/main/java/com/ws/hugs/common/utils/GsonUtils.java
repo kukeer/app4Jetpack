@@ -3,12 +3,14 @@ package com.ws.hugs.common.utils;
 import com.google.gson.Gson;
 import com.ws.hugs.data.remote.MM131Article;
 import com.ws.hugs.data.remote.response.MPageResponse;
+import com.ws.hugs.db.book.tb.BookModel;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Stack;
 import java.util.stream.Collectors;
 
-public class GsonUtils {
+public class GsonUtils<T> {
 
     private static ThreadLocal<Gson> threadLocal  = new ThreadLocal<>();
     private static GsonUtils gsonUtils =null;
@@ -17,7 +19,9 @@ public class GsonUtils {
     public static GsonUtils getInstance(){
         if (gsonUtils ==null){
             gsonUtils = new GsonUtils();
-            threadLocal.set(new Gson());
+            if (threadLocal.get()==null || !(threadLocal.get() instanceof Gson)){
+                threadLocal.set(new Gson());
+            }
         }
         return gsonUtils;
     }
@@ -26,6 +30,15 @@ public class GsonUtils {
         return threadLocal.get().toJson(obj);
     }
 
+
+    public <T> List<T> jsonToList(Object obj, Class<T[]> clazz)
+    {
+
+        Gson gson = threadLocal.get();
+
+        T[] array = gson.fromJson(trasnlateToString(obj), clazz);
+        return Arrays.asList(array);
+    }
     public Stack<MPageResponse<MM131Article>> getAllMM131Article(String data){
         Stack mPageResponse = threadLocal.get().fromJson(data, Stack.class);
         return mPageResponse;

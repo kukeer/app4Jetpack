@@ -13,67 +13,52 @@ import java.util.Stack;
 
 public class SPUtils {
 
-    private static SPUtils spUtils;
+    private static SPUtils spUtils = new SPUtils();
 //    private static ThreadLocal<SharedPreferences> spThread = new ThreadLocal<>();
-private static SharedPreferences sp;
+    private SharedPreferences sp;
     //theme列表 key
     private String ARTICLE_KEY = "ARTICLE_KEY";
+
+
 
     /**
      * 初始化方法 用于在application中调用
      * @param sharedPreferences
      */
-    public static void initSp(SharedPreferences sharedPreferences){
+    public void initSp(SharedPreferences sharedPreferences){
         sp= sharedPreferences;
-        spUtils = new SPUtils();
     }
 
     public static SPUtils getInstance(){
         return spUtils;
     }
 
-    public List<MPageResponse<MM131Article>> getArticleCount(){
-//        SharedPreferences sharedPreferences = spThread.get();
-        String string = sp.getString(ARTICLE_KEY, "");
-        if ("".equals(string)) return null;
-        List<MPageResponse<MM131Article>> allMM131Article = GsonUtils.getInstance().getAllMM131Article(string);
-        return allMM131Article;
+
+    public static final String BOOK_MIN_OFFSET = "BOOK_MIN_OFFSET";
+    public static final String BOOK_MAX_OFFSET = "BOOK_MAX_OFFSET";
+
+
+    public void saveBookDataIndex(int minIndex,int maxIndex){
+        SharedPreferences.Editor edit = sp.edit();
+        edit.putInt(BOOK_MIN_OFFSET,minIndex);
+        edit.putInt(BOOK_MAX_OFFSET,maxIndex);
+        edit.commit();
     }
 
-    public MPageResponse<MM131Article> getCurrentArticle(){
-//        SharedPreferences sharedPreferences = spThread.get();
-        if (!sp.contains(ARTICLE_KEY)) return null;
-        String string = sp.getString(ARTICLE_KEY, "");
-        if ("".equals(string)) {
-            return null;
-        }
-        MPageResponse<MM131Article> allMM131Article = GsonUtils.getInstance().getCurrentMaxIndexArticle(string);
-        return allMM131Article;
+    public void saveBookMinDataIndex(int minIndex){
+        SharedPreferences.Editor edit = sp.edit();
+        edit.putInt(BOOK_MIN_OFFSET,minIndex);
+        edit.commit();
     }
-
-    public void addAricle(MPageResponse<MM131Article>  articles){
-//        SharedPreferences sharedPreferences = spThread.get();
-        if (!sp.contains(ARTICLE_KEY)){
-            Stack<MPageResponse<MM131Article>> mPageResponses = new Stack<>();
-            mPageResponses.add(articles);
-            sp.edit().putString(ARTICLE_KEY,GsonUtils.getInstance().trasnlateToString(mPageResponses)).apply();
-        }else {
-            String string = sp.getString(ARTICLE_KEY, "");
-            Stack<MPageResponse<MM131Article>> allMM131Article = GsonUtils.getInstance().getAllMM131Article(string);
-            allMM131Article.push(articles);
-        }
-
+    public void saveBookMaxDataIndex(int maxIndex){
+        SharedPreferences.Editor edit = sp.edit();
+        edit.putInt(BOOK_MAX_OFFSET,maxIndex);
+        edit.commit();
     }
-
-    public void removeAllData(){
-//        SharedPreferences sharedPreferences = spThread.get();
-        if (!sp.contains(ARTICLE_KEY)) return;
-        String string = sp.getString(ARTICLE_KEY, "");
-        if ("".equals(string)) {
-            return;
-        }
-
-        sp.edit().remove(ARTICLE_KEY).commit();
+    public int getBookDataMinIndex(){
+        return sp.getInt(BOOK_MIN_OFFSET,0);
     }
-
+    public int getBookDataMaxIndex(){
+        return sp.getInt(BOOK_MAX_OFFSET,0);
+    }
 }

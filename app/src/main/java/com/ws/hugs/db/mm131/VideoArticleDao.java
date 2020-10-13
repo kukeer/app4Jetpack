@@ -6,8 +6,7 @@ import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 
-import com.ws.hugs.app.picture.data.db.MM131ArticleModel;
-import com.ws.hugs.app.picture.data.db.MM131VideoArticleModel;
+import com.ws.hugs.db.mm131.tb.MM131VideoArticleModel;
 
 import java.util.List;
 

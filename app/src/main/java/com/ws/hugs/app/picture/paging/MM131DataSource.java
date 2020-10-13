@@ -9,7 +9,7 @@ import androidx.paging.PageKeyedDataSource;
 import com.ws.hugs.HugApplication;
 import com.ws.hugs.api.MM131RequestCenter;
 import com.ws.hugs.api.RequestManager;
-import com.ws.hugs.app.picture.data.db.MM131ArticleModel;
+import com.ws.hugs.db.mm131.tb.MM131ArticleModel;
 import com.ws.hugs.data.remote.MM131Article;
 import com.ws.hugs.data.remote.response.MPageResponse;
 import com.xcheng.retrofit.Call;

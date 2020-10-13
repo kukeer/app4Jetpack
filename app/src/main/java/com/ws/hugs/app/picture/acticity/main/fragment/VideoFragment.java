@@ -1,7 +1,6 @@
 package com.ws.hugs.app.picture.acticity.main.fragment;
 
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
 
 import android.os.Bundle;
 
@@ -22,8 +21,7 @@ import com.scwang.smart.refresh.layout.api.RefreshLayout;
 import com.scwang.smart.refresh.layout.listener.OnRefreshListener;
 import com.ws.hugs.R;
 import com.ws.hugs.app.picture.adapter.VideoAdapter;
-import com.ws.hugs.app.picture.data.db.MM131VideoArticleModel;
-import com.ws.hugs.app.picture.paging.MyAdapter;
+import com.ws.hugs.db.mm131.tb.MM131VideoArticleModel;
 import com.ws.hugs.data.viewmodel.MM131VideoArticleViewModel;
 
 public class VideoFragment extends Fragment {
@@ -45,7 +43,6 @@ public class VideoFragment extends Fragment {
         recyclerView = inflate.findViewById(R.id.video_recy);
         refreshLayout = inflate.findViewById(R.id.smart_refresh);
 
-
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setHasFixedSize(true);
@@ -57,7 +54,7 @@ public class VideoFragment extends Fragment {
         model.mm131ArticleViewModelLiveData.observe(getActivity(), new Observer<PagedList<MM131VideoArticleModel>>() {
             @Override
             public void onChanged(PagedList<MM131VideoArticleModel> mm131VideoArticleModels) {
-                recyclerView.getAdapter().notifyDataSetChanged();
+//                recyclerView.getAdapter().notifyDataSetChanged();
                 ((VideoAdapter)recyclerView.getAdapter()).submitList(mm131VideoArticleModels);
             }
         });

@@ -10,7 +10,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.ws.hugs.BookListFragment;
 import com.ws.hugs.R;
+import com.ws.hugs.app.book.activity.BookListActivity;
 import com.ws.hugs.app.picture.acticity.main.PicActivity;
 import com.ws.hugs.app.picture.acticity.videoplayer.VideoPlayActivity;
 import com.ws.hugs.databinding.FragmentHomeBinding;
@@ -43,8 +45,10 @@ public class HomeFragment extends Fragment {
     public void setOnclick(View view){
         switch (view.getId()){
             case R.id.mm131_routing:
-//                gotoActivity(VideoPlayActivity.class);
                 gotoActivity(PicActivity.class);
+                break;
+            case R.id.book_routing:
+                gotoActivity(BookListActivity.class);
                 break;
             default:
                 gotoActivity(PicActivity.class);

@@ -4,10 +4,9 @@ import android.util.Log;
 
 import com.ws.hugs.HugApplication;
 import com.ws.hugs.api.MM131RequestCenter;
-import com.ws.hugs.app.picture.data.db.MM131VideoArticleModel;
 import com.ws.hugs.app.picture.paging.MM131ArticleCallback;
 import com.ws.hugs.app.picture.paging.MM131DataSource;
-import com.ws.hugs.app.picture.data.db.MM131ArticleModel;
+import com.ws.hugs.db.mm131.tb.MM131ArticleModel;
 import com.ws.hugs.data.remote.MM131Article;
 import com.ws.hugs.data.remote.response.MPageResponse;
 import com.ws.hugs.db.mm131.ArticleDao;

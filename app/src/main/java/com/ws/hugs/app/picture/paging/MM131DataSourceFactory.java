@@ -4,7 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
 import androidx.paging.DataSource;
 
-import com.ws.hugs.app.picture.data.db.MM131ArticleModel;
+import com.ws.hugs.db.mm131.tb.MM131ArticleModel;
 
 public class MM131DataSourceFactory extends DataSource.Factory<Integer, MM131ArticleModel> {
 

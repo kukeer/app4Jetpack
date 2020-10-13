@@ -3,10 +3,7 @@ package com.ws.hugs.app.picture.adapter;
 import android.content.Context;
 import android.net.Uri;
 import android.util.Log;
-import android.view.GestureDetector;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
-import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -33,7 +30,7 @@ import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
 import com.google.android.exoplayer2.upstream.TransferListener;
 import com.google.android.exoplayer2.util.Util;
 import com.ws.hugs.R;
-import com.ws.hugs.app.picture.data.db.MM131VideoArticleModel;
+import com.ws.hugs.db.mm131.tb.MM131VideoArticleModel;
 import com.ws.hugs.common.utils.DefaultHttpsDataSourceFactory;
 import com.ws.hugs.databinding.VideoplayBinding;
 

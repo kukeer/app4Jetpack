@@ -4,12 +4,10 @@ import android.app.Application;
 
 import com.ws.hugs.api.MM131RequestCenter;
 import com.ws.hugs.app.picture.paging.ArticleBoundryCallBack;
-import com.ws.hugs.app.picture.paging.MM131DataSource;
-import com.ws.hugs.app.picture.paging.MM131DataSourceFactory;
 //import com.ws.hugs.paging.ArticleBoundryCallBack;
 //import com.ws.hugs.paging.MM131DataSource;
 //import com.ws.hugs.paging.MM131DataSourceFactory;
-import com.ws.hugs.app.picture.data.db.MM131ArticleModel;
+import com.ws.hugs.db.mm131.tb.MM131ArticleModel;
 import com.ws.hugs.db.HugsDatabase;
 
 import androidx.lifecycle.AndroidViewModel;
@@ -34,8 +32,13 @@ public class MM131ArticleViewModel extends AndroidViewModel {
 //        mm131ArticleViewModelLiveData = (new LivePagedListBuilder<>(new MM131DataSourceFactory(),build)).build();
 
 
+  
+        
         //网络+本地
         HugsDatabase instance = HugsDatabase.getInstance(application);
+
+//        PagingSource<Integer, MM131ArticleModel> userList = instance.articleDao().getUserList();
+
         mm131ArticleViewModelLiveData = (new LivePagedListBuilder<>(instance.articleDao().getUserList(), MM131RequestCenter.DEFAULT_PAGE_SIZE))
                 .setBoundaryCallback(new ArticleBoundryCallBack(application)).build();
 

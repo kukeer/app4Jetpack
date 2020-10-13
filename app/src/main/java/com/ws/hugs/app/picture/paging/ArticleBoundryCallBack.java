@@ -5,7 +5,7 @@ import android.app.Application;
 import androidx.paging.PagedList;
 
 import com.ws.hugs.api.RequestManager;
-import com.ws.hugs.app.picture.data.db.MM131ArticleModel;
+import com.ws.hugs.db.mm131.tb.MM131ArticleModel;
 import com.ws.hugs.db.HugsDatabase;
 import com.ws.hugs.db.mm131.ArticleDao;
 import com.ws.hugs.repositry.MM131Repository;

@@ -46,9 +46,9 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
-
+//implements GestureDetector.OnGestureListener
 public class MainActivity extends AppCompatActivity
-        implements GestureDetector.OnGestureListener {
+        {
     private String TAG = getClass().getSimpleName();
 
     LifecycleProvider provider = AndroidLifecycle.createLifecycleProvider(this);
@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity
     ImageView chart;
     ImageView collect;
 
-    GestureDetector gestureDetector = new GestureDetector(this);
+//    GestureDetector gestureDetector = new GestureDetector(this);
     VelocityTracker velocityTracker = VelocityTracker.obtain();
     List<Bitmap> list = new ArrayList<Bitmap>();
     String currentMessage = null;
@@ -71,20 +71,6 @@ public class MainActivity extends AppCompatActivity
     ImageAdapter imageAdapter;
     TextView back;
 
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-
-        velocityTracker.addMovement(event);
-        int xV = (int) velocityTracker.getXVelocity();
-        int xY = (int) velocityTracker.getXVelocity();
-
-        Scroller s = new Scroller(getBaseContext());
-        Log.d(TAG, "xV " + xV + " xY " + xY);
-        View view;
-        ViewGroup viewg;
-        boolean b = gestureDetector.onTouchEvent(event);
-        return super.onTouchEvent(event);
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -149,7 +135,6 @@ public class MainActivity extends AppCompatActivity
 
     @Subscribe(sticky = true)
     public void test(EventMessage eventMessage) {
-        System.out.println("activity主线程接受到消息 " + eventMessage);
         if (eventMessage.getType() == 100) {
             Log.i(TAG, "即将发送请求  " + eventMessage);
             if (currentMessage == null || !currentMessage.equals(eventMessage.getMessage())) {
@@ -247,35 +232,7 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-    @Override
-    public boolean onDown(MotionEvent e) {
-        return false;
-    }
 
-    @Override
-    public void onShowPress(MotionEvent e) {
-
-    }
-
-    @Override
-    public boolean onSingleTapUp(MotionEvent e) {
-        return false;
-    }
-
-    @Override
-    public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
-        return false;
-    }
-
-    @Override
-    public void onLongPress(MotionEvent e) {
-
-    }
-
-    @Override
-    public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
-        return false;
-    }
 
 
 

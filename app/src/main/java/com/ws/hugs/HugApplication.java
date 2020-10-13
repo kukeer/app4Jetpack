@@ -84,7 +84,7 @@ public class HugApplication extends Application {
     public static int phoneWidth = 0;
     public static int phoneHeight = 0;
     private void init() {
-        SPUtils.initSp(getSharedPreferences("APPLICATION",Context.MODE_PRIVATE));
+        SPUtils.getInstance().initSp(getSharedPreferences("APPLICATION",Context.MODE_PRIVATE));
         WindowManager wm = (WindowManager) getApplicationContext().getSystemService(Context.WINDOW_SERVICE);
 //        SingleWorker.initContext(this);
         phoneWidth = wm.getDefaultDisplay().getWidth();

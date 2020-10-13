@@ -1,7 +1,5 @@
 package com.ws.hugs.db.mm131;
 
-import com.ws.hugs.app.picture.data.db.MM131ArticleModel;
-
 import java.util.List;
 
 
@@ -10,6 +8,8 @@ import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
+
+import com.ws.hugs.db.mm131.tb.MM131ArticleModel;
 
 @Dao
 public interface ArticleDao {

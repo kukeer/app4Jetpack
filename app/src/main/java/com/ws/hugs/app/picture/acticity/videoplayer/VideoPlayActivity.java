@@ -3,13 +3,10 @@ package com.ws.hugs.app.picture.acticity.videoplayer;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.Observer;
-import androidx.paging.PagedList;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.AssetManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.AttributeSet;
@@ -19,7 +16,6 @@ import android.view.MotionEvent;
 import android.view.View;
 
 import com.google.android.exoplayer2.ExoPlayerFactory;
-import com.google.android.exoplayer2.Player;
 import com.google.android.exoplayer2.SimpleExoPlayer;
 import com.google.android.exoplayer2.extractor.DefaultExtractorsFactory;
 import com.google.android.exoplayer2.extractor.ExtractorsFactory;
@@ -34,14 +30,10 @@ import com.google.android.exoplayer2.upstream.BandwidthMeter;
 import com.google.android.exoplayer2.upstream.DataSource;
 import com.google.android.exoplayer2.upstream.DefaultBandwidthMeter;
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
-import com.google.android.exoplayer2.upstream.DefaultHttpDataSourceFactory;
 import com.google.android.exoplayer2.upstream.TransferListener;
 import com.google.android.exoplayer2.util.Util;
 import com.ws.hugs.R;
-import com.ws.hugs.app.picture.adapter.VideoPlayAdapter;
-import com.ws.hugs.app.picture.data.db.MM131VideoArticleModel;
 import com.ws.hugs.common.utils.DefaultHttpsDataSourceFactory;
-import com.ws.hugs.data.viewmodel.MM131VideoArticleViewModel;
 import com.ws.hugs.databinding.VideoplayBinding;
 
 

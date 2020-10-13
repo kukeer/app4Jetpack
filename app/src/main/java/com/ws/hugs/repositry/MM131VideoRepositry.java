@@ -10,14 +10,10 @@ import androidx.paging.LivePagedListBuilder;
 import androidx.paging.PagedList;
 
 import com.ws.hugs.HugApplication;
-import com.ws.hugs.api.MM131RequestCenter;
-import com.ws.hugs.api.RequestManager;
-import com.ws.hugs.app.picture.data.db.MM131ArticleModel;
-import com.ws.hugs.app.picture.data.db.MM131VideoArticleModel;
+import com.ws.hugs.db.mm131.tb.MM131VideoArticleModel;
 import com.ws.hugs.app.picture.data.remote.VideoArticleDto;
 import com.ws.hugs.app.picture.paging.MM131DataSource;
 import com.ws.hugs.data.remote.response.MPageResponse;
-import com.ws.hugs.db.mm131.ArticleDao;
 import com.ws.hugs.db.mm131.VideoArticleDao;
 import com.xcheng.retrofit.Call;
 import com.xcheng.retrofit.Callback;

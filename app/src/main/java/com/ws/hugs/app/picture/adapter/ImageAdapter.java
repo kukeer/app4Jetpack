@@ -36,7 +36,7 @@ public class ImageAdapter extends BannerAdapter<Bitmap, ImageAdapter.BannerViewH
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.MATCH_PARENT));
 
-        imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+        imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
 
         return new BannerViewHolder(imageView);
     }

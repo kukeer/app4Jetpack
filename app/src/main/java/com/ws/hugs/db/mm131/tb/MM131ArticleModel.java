@@ -1,6 +1,4 @@
-package com.ws.hugs.app.picture.data.db;
-
-import java.util.Date;
+package com.ws.hugs.db.mm131.tb;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;

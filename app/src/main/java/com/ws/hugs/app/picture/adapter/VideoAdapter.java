@@ -4,12 +4,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
-import androidx.databinding.ViewDataBinding;
 import androidx.paging.PagedListAdapter;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.gson.Gson;
 import com.ws.hugs.R;
 import com.ws.hugs.app.picture.acticity.videoplayer.VideoPlayActivity;
-import com.ws.hugs.app.picture.data.db.MM131VideoArticleModel;
+import com.ws.hugs.db.mm131.tb.MM131VideoArticleModel;
 import com.ws.hugs.app.picture.data.remote.VideoArticleDto;
 import com.ws.hugs.databinding.LayoutBinding;
 
